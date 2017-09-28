@@ -7,6 +7,7 @@ package lms;
 
 import java.awt.Checkbox;
 import java.awt.CheckboxGroup;
+import java.awt.Label;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -70,21 +71,23 @@ public class MemberModel {
 
     public boolean updateMember() {
         try {
-            String qu = "update members set mname=? , mgrade=? , memail=? , mcontactnum=? , mstatus=? where mregID=? ";
+            Label lblmregid = null;
+              String mregid = lblmregid.getText();
+            String qu = "update members set mname=?,mgrade=?,memail=?,mcontactnum=?,mstatus=? where mregID='"+mregid+"' ";
 
             PreparedStatement pst = DBconnect.connect().prepareStatement(qu);
-            System.out.println("ghhjooooooogg");
+           
             // pst = conn.prepareStatement(qr);
             pst.setString(1, this.mname);
             pst.setString(2, this.mgrade);
             pst.setString(3, this.memail);
             pst.setString(4, this.mcontactnum);
             pst.setString(5, this.mstatus);
-            pst.setString(6, this.mregID);
+           // pst.setString(6, this.mregID);
 
             pst.execute();
-
-            System.out.println(String.valueOf(pst.execute()).toString());
+System.out.println(pst);
+            //System.out.println(String.valueOf(pst.execute()).toString());
 
             return true;
 
@@ -105,6 +108,24 @@ public class MemberModel {
 //  return false;
 //}
 //     }
+//    
+//    public void viewEnableMember(){
+//        try {
+//            String s= "select mregID,mname,mgrade,memail,mcontactnum from members where status='Enable'"; 
+//             pst = conn.prepareStatement(n);
+//            rs = pst.executeQuery();
+//            tblbooks.setModel(DbUtils.resultSetToTableModel(rs));
+//            
+//        } catch (Exception e) {
+//            
+//        }
+//    
+//    
+//    
+//    }
+//    
+//    
+//    
 
     public String getMregID() {
         return mregID;

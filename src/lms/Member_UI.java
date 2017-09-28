@@ -74,7 +74,6 @@ public class Member_UI extends javax.swing.JFrame {
         cmbmgrade = new javax.swing.JComboBox<>();
         btnminsert = new javax.swing.JButton();
         btnmupdate = new javax.swing.JButton();
-        btnmdelete = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblmembers = new javax.swing.JTable();
         lblmregid = new javax.swing.JLabel();
@@ -82,6 +81,9 @@ public class Member_UI extends javax.swing.JFrame {
         txtmconnum = new javax.swing.JTextField();
         cmbmstatus = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
+        btnmdisable = new javax.swing.JButton();
+        btnmenable = new javax.swing.JButton();
+        txtmvisible = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -125,7 +127,7 @@ public class Member_UI extends javax.swing.JFrame {
                 btnminsertActionPerformed(evt);
             }
         });
-        getContentPane().add(btnminsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 90, 40));
+        getContentPane().add(btnminsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, 90, 40));
 
         btnmupdate.setText("UPDATE");
         btnmupdate.addActionListener(new java.awt.event.ActionListener() {
@@ -133,15 +135,7 @@ public class Member_UI extends javax.swing.JFrame {
                 btnmupdateActionPerformed(evt);
             }
         });
-        getContentPane().add(btnmupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 100, 40));
-
-        btnmdelete.setText("DELETE");
-        btnmdelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnmdeleteActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnmdelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 340, 90, 40));
+        getContentPane().add(btnmupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, 100, 40));
 
         tblmembers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -188,7 +182,29 @@ public class Member_UI extends javax.swing.JFrame {
         jLabel2.setText("Status");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 80, -1));
 
-        setSize(new java.awt.Dimension(1040, 427));
+        btnmdisable.setText("Disabled Members");
+        btnmdisable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnmdisableActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnmdisable, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 380, 150, 30));
+
+        btnmenable.setText("Enable Members");
+        btnmenable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnmenableMouseClicked(evt);
+            }
+        });
+        btnmenable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnmenableActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnmenable, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 380, 150, 30));
+        getContentPane().add(txtmvisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 50, 240, 20));
+
+        setSize(new java.awt.Dimension(1040, 490));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -286,13 +302,48 @@ public class Member_UI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_tblmembersMouseClicked
 
-    private void btnmdeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmdeleteActionPerformed
-
-    }//GEN-LAST:event_btnmdeleteActionPerformed
-
     private void cmbmstatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbmstatusActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbmstatusActionPerformed
+
+    private void btnmenableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnmenableMouseClicked
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_btnmenableMouseClicked
+
+    private void btnmenableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmenableActionPerformed
+        // TODO add your handling code here:
+        
+       try {
+            String s= "select mregID,mname,mgrade,memail,mcontactnum from members where mstatus='Enable'"; 
+             pst = conn.prepareStatement(s);
+            rs = pst.executeQuery();
+            tblmembers.setModel(DbUtils.resultSetToTableModel(rs));
+            
+            txtmvisible.setText("List Of ENABLE Members");
+            
+        } catch (Exception e) {
+            
+        }
+        
+        
+    }//GEN-LAST:event_btnmenableActionPerformed
+
+    private void btnmdisableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmdisableActionPerformed
+        // TODO add your handling code here:
+         try {
+            String s= "select mregID,mname,mgrade,memail,mcontactnum from members where mstatus='Disable'"; 
+             pst = conn.prepareStatement(s);
+            rs = pst.executeQuery();
+            tblmembers.setModel(DbUtils.resultSetToTableModel(rs));
+            
+            txtmvisible.setText("List Of DISABLED Members");
+        } catch (Exception e) {
+            
+        }
+        
+    }//GEN-LAST:event_btnmdisableActionPerformed
 
     /**
      * @param args the command line arguments
@@ -331,7 +382,8 @@ public class Member_UI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnmdelete;
+    private javax.swing.JButton btnmdisable;
+    private javax.swing.JButton btnmenable;
     private javax.swing.JButton btnminsert;
     private javax.swing.JButton btnmupdate;
     private javax.swing.JComboBox<String> cmbmgrade;
@@ -350,5 +402,6 @@ public class Member_UI extends javax.swing.JFrame {
     private javax.swing.JTextField txtmconnum;
     private javax.swing.JTextField txtmemail;
     private javax.swing.JTextField txtmname;
+    private javax.swing.JLabel txtmvisible;
     // End of variables declaration//GEN-END:variables
 }

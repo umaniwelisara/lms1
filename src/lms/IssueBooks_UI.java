@@ -5,6 +5,20 @@
  */
 package lms;
 
+import java.sql.Connection;
+//import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+//import java.util.Calendar;
+//import java.util.Locale;
+import javax.swing.JOptionPane;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 /**
  *
  * @author Umani Welisara
@@ -14,9 +28,83 @@ public class IssueBooks_UI extends javax.swing.JFrame {
     /**
      * Creates new form payment
      */
+    
+    
+    
+    Connection conn = null;
+    PreparedStatement pst = null;
+    ResultSet rs = null;
+    
+    
     public IssueBooks_UI() {
         initComponents();
+         bbbid_1.setText("");
+         bbbid_2.setText("");
+        bbmid.setText("");
+        
+         conn = DBconnect.connect();
+        
+//         try {
+//            new Thread(new Runnable() {
+//
+//                public void run() {
+//                    
+//                    while(true){
+//                        
+//                      java.util.Date d=new java.util.Date();
+//            String date=d.toString();
+//            String arr[]=date.split(" ");
+//            String newdate=arr[5]+"-"+arr[1]+"-"+arr[2];
+//            
+//            
+//         lblcdate.setText(newdate);
+//           
+//           
+//                      //...............
+//
+//                      
+//                      
+//                      
+//                      
+//                    }
+//                 
+//                }
+//            }).start();
+//            
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+Calendar cal = Calendar.getInstance();
+System.out.println(df.format(cal.getTime()));
+lblcdate.setText(df.format(cal.getTime()));
+//        //;;;;;;;;;;;;;;;;;
+
+ Date currentDate = new Date();
+ DateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd");
+        System.out.println(dateFormat.format(currentDate));
+  
+        // convert date to calendar
+        Calendar c = Calendar.getInstance();
+        c.setTime(currentDate);
+        // manipulate date
+         c.add(Calendar.DATE, 7);
+          // convert calendar to date
+        Date currentDatePlusOne = c.getTime();
+        System.out.println(dateFormat.format(currentDatePlusOne));
+        
+        
+          lblrdate.setText(dateFormat.format(currentDatePlusOne));
+//    //'''''''''''''''''
+         
+          
+       
+         
     }
+
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,11 +115,97 @@ public class IssueBooks_UI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        bbmid = new javax.swing.JTextField();
+        bbbid_1 = new javax.swing.JTextField();
+        lblrdate = new javax.swing.JLabel();
+        bbbid_2 = new javax.swing.JTextField();
+        btnbbborrow = new javax.swing.JButton();
+        lblcdate = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setText("Book ID");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
+
+        jLabel2.setText("Member ID");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
+
+        jLabel3.setText("Current Date");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, -1));
+
+        jLabel4.setText("Return Date");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, -1));
+
+        bbmid.setText("jTextField1");
+        jPanel1.add(bbmid, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 170, -1));
+
+        bbbid_1.setText("jTextField1");
+        jPanel1.add(bbbid_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 170, -1));
+
+        lblrdate.setText("jLabel5");
+        jPanel1.add(lblrdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 170, 20));
+
+        bbbid_2.setText("jTextField1");
+        jPanel1.add(bbbid_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 170, -1));
+
+        btnbbborrow.setText("BORROW");
+        btnbbborrow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbbborrowActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnbbborrow, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 250, 110, 60));
+
+        lblcdate.setText("jLabel5");
+        jPanel1.add(lblcdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 170, 20));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 350, 340));
+
+        jLabel5.setText("    BORROW BOOKS");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 170, 30));
+
+        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 10, 390));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnbbborrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbbborrowActionPerformed
+        // TODO add your handling code here:
+      
+         String memid = bbmid.getText();
+        String book1 = bbbid_1.getText();
+         String book2 = bbbid_2.getText();
+          String cdate =lblcdate.getText();
+        String rdate = lblrdate.getText();
+       
+        IssueBooksModel ibm = new IssueBooksModel( memid, book1, book2, cdate, rdate);
+        
+         boolean successStatus = ibm.insertIssueBook();
+        if (successStatus) {
+            JOptionPane.showMessageDialog(this, "Successfully inserted to db");
+           
+            bbmid.setText("");
+            bbbid_1.setText("");
+            bbbid_2.setText("");
+            lblcdate.setText("");
+            lblrdate.setText("");
+        } else {
+            JOptionPane.showMessageDialog(this, "Error in inserting to db");
+        }
+        
+        
+    }//GEN-LAST:event_btnbbborrowActionPerformed
 
     /**
      * @param args the command line arguments
@@ -70,5 +244,18 @@ public class IssueBooks_UI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField bbbid_1;
+    private javax.swing.JTextField bbbid_2;
+    private javax.swing.JTextField bbmid;
+    private javax.swing.JButton btnbbborrow;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblcdate;
+    private javax.swing.JLabel lblrdate;
     // End of variables declaration//GEN-END:variables
 }

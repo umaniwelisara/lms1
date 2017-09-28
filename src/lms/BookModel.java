@@ -5,6 +5,7 @@
  */
 package lms;
 
+import java.awt.Label;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -84,9 +85,13 @@ public class BookModel {
     public boolean updateBook() {
 
         try {
+            Label lblbid = null;
+            
+            String bid = lblbid.getText();
+            
             String q = "update books "
                     + "set bname=?,bauthor=?,bcategory=? , bqty=?  "
-                    + "where bid=?";
+                    + "where bid='"+bid+"'";
 
             PreparedStatement pst = DBconnect.connect().prepareStatement(q);
 
