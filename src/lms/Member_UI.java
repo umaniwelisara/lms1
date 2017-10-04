@@ -86,56 +86,69 @@ public class Member_UI extends javax.swing.JFrame {
         txtmvisible = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1170, 420));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(153, 0, 102));
         jLabel1.setText("LIBRARY REGISTRATION FORM");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 270, 20));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, 430, 20));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Name");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Member registration id ");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, 30));
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Grade");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Email");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Contact number");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
 
+        txtmemail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtmemail.setText("jTextField2");
-        getContentPane().add(txtmemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 200, -1));
+        getContentPane().add(txtmemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 200, -1));
 
+        txtmname.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtmname.setText("jTextField1");
-        getContentPane().add(txtmname, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 200, -1));
+        getContentPane().add(txtmname, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 200, -1));
 
+        cmbmgrade.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbmgrade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "choose the grade", "6", "7", "8", "9", "10", "11", "12" }));
         cmbmgrade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbmgradeActionPerformed(evt);
             }
         });
-        getContentPane().add(cmbmgrade, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 200, -1));
+        getContentPane().add(cmbmgrade, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 200, -1));
 
+        btnminsert.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnminsert.setText("ADD");
         btnminsert.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnminsertActionPerformed(evt);
             }
         });
-        getContentPane().add(btnminsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, 90, 40));
+        getContentPane().add(btnminsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 340, 40));
 
+        btnmupdate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnmupdate.setText("UPDATE");
         btnmupdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnmupdateActionPerformed(evt);
             }
         });
-        getContentPane().add(btnmupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, 100, 40));
+        getContentPane().add(btnmupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 340, 40));
 
         tblmembers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -155,41 +168,47 @@ public class Member_UI extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblmembers);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 620, 270));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, 670, 270));
 
+        lblmregid.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblmregid.setText("jLabel2");
-        getContentPane().add(lblmregid, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 200, -1));
+        getContentPane().add(lblmregid, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 90, 20));
 
-        jButton1.setText("Back");
+        jButton1.setText("<");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(943, 10, 70, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 10, 70, 40));
 
+        txtmconnum.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtmconnum.setText("jTextField2");
-        getContentPane().add(txtmconnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, 200, -1));
+        getContentPane().add(txtmconnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 200, -1));
 
+        cmbmstatus.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbmstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enable", "Disable", "Select one" }));
         cmbmstatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbmstatusActionPerformed(evt);
             }
         });
-        getContentPane().add(cmbmstatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, 200, -1));
+        getContentPane().add(cmbmstatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, 200, -1));
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Status");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 80, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 80, -1));
 
+        btnmdisable.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnmdisable.setText("Disabled Members");
         btnmdisable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnmdisableActionPerformed(evt);
             }
         });
-        getContentPane().add(btnmdisable, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 380, 150, 30));
+        getContentPane().add(btnmdisable, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 370, 150, 50));
 
+        btnmenable.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnmenable.setText("Enable Members");
         btnmenable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -201,10 +220,12 @@ public class Member_UI extends javax.swing.JFrame {
                 btnmenableActionPerformed(evt);
             }
         });
-        getContentPane().add(btnmenable, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 380, 150, 30));
-        getContentPane().add(txtmvisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 50, 240, 20));
+        getContentPane().add(btnmenable, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 370, 140, 50));
 
-        setSize(new java.awt.Dimension(1040, 490));
+        txtmvisible.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        getContentPane().add(txtmvisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 50, 280, 30));
+
+        setSize(new java.awt.Dimension(1196, 479));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -251,14 +272,14 @@ public class Member_UI extends javax.swing.JFrame {
         int x = JOptionPane.showConfirmDialog(null, "Do you really want to update?");
 
         if (x == 0) {
-
+            String id =lblmregid.getText();
             String name = txtmname.getText();
             String grade = cmbmgrade.getSelectedItem().toString();
             String email = txtmemail.getText();
             String phone = txtmconnum.getText();
             String status = cmbmstatus.getSelectedItem().toString();
             
-            MemberModel m = new MemberModel(name, grade, email, phone, status);
+            MemberModel m = new MemberModel(id,name, grade, email, phone, status);
             boolean successStatus = m.updateMember();
 
             if (successStatus) {

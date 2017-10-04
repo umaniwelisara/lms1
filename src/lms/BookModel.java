@@ -53,6 +53,7 @@ public class BookModel {
         try {
             String s = "insert into books(bname,bauthor,bcategory,bqty) values (?,?,?,?)";
             PreparedStatement pst = DBconnect.connect().prepareStatement(s);
+            
             pst.setString(1, this.bname);
             pst.setString(2, this.bauthor);
             pst.setString(3, this.bcategory);
@@ -85,17 +86,18 @@ public class BookModel {
     public boolean updateBook() {
 
         try {
-            Label lblbid = null;
+            //Label lblbid = null;
             
-            String bid = lblbid.getText();
+            //String bid = lblbid.getText();
             
             String q = "update books "
                     + "set bname=?,bauthor=?,bcategory=? , bqty=?  "
-                    + "where bid='"+bid+"'";
+                    + "where bid=?";
 
             PreparedStatement pst = DBconnect.connect().prepareStatement(q);
 
             // pst = conn.prepareStatement(qr);
+           // pst.setString(1, this.bid);
             pst.setString(1, this.bname);
             pst.setString(2, this.bauthor);
             pst.setString(3, this.bcategory);

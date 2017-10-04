@@ -88,27 +88,36 @@ public class Book_UI extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 153, 153));
         jLabel1.setText("MANAGE BOOKS INFORMATION");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 160, 40));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, 310, 40));
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Book ISBN");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Book name");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Author");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Category");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
 
+        txtbname.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtbname.setText("jTextField1");
         getContentPane().add(txtbname, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 210, -1));
 
+        txtbauthor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtbauthor.setText("jTextField1");
         getContentPane().add(txtbauthor, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 210, -1));
 
+        cmbbcategory.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbbcategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose book category", "Science", "Maths", "English", "History", "Art", "Commerce", "Tamil", "Health", "Bio", "Chemestry", "Com. Maths", "Physics" }));
         cmbbcategory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,32 +125,38 @@ public class Book_UI extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbbcategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 210, -1));
+
+        lblbid.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(lblbid, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 210, 20));
 
+        btnbdelete.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnbdelete.setText("Delete");
         btnbdelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnbdeleteActionPerformed(evt);
             }
         });
-        getContentPane().add(btnbdelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 80, 60));
+        getContentPane().add(btnbdelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 310, 40));
 
+        btnbinsert.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnbinsert.setText("Insert");
         btnbinsert.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnbinsertActionPerformed(evt);
             }
         });
-        getContentPane().add(btnbinsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 90, 60));
+        getContentPane().add(btnbinsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 310, 40));
 
+        btnbupdate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnbupdate.setText("Update");
         btnbupdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnbupdateActionPerformed(evt);
             }
         });
-        getContentPane().add(btnbupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 90, 60));
+        getContentPane().add(btnbupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 310, 40));
 
+        txtsearch.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtsearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtsearchActionPerformed(evt);
@@ -152,19 +167,22 @@ public class Book_UI extends javax.swing.JFrame {
                 txtsearchKeyReleased(evt);
             }
         });
-        getContentPane().add(txtsearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, 240, -1));
+        getContentPane().add(txtsearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 80, 490, 30));
 
+        btnbsearch.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnbsearch.setText("Search");
         btnbsearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnbsearchActionPerformed(evt);
             }
         });
-        getContentPane().add(btnbsearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 33, 100, 40));
+        getContentPane().add(btnbsearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 70, 180, 40));
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Qty");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
 
+        txtbqty.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtbqty.setText("jTextField1");
         getContentPane().add(txtbqty, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 210, -1));
 
@@ -186,20 +204,21 @@ public class Book_UI extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblbooks);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 480, 210));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 800, 290));
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Book Name");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 84, -1, 20));
 
-        jButton1.setText("Back");
+        jButton1.setText("<");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(873, 0, 70, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 10, 50, 40));
 
-        setSize(new java.awt.Dimension(965, 394));
+        setSize(new java.awt.Dimension(1196, 479));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -256,12 +275,12 @@ public class Book_UI extends javax.swing.JFrame {
         int x = JOptionPane.showConfirmDialog(null, "Do you really want to update?");
 
         if (x == 0) {
-            
+            String id = lblbid.getText();
             String name = txtbname.getText();
             String author = txtbauthor.getText();
             String category = cmbbcategory.getSelectedItem().toString();
             String qty = txtbqty.getText();
-            BookModel b = new BookModel(name, author, category, qty);
+            BookModel b = new BookModel(id,name, author, category, qty);
             boolean successStatus = b.updateBook();
 
             if (successStatus) {

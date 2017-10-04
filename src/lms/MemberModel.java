@@ -71,19 +71,22 @@ public class MemberModel {
 
     public boolean updateMember() {
         try {
-            Label lblmregid = null;
-              String mregid = lblmregid.getText();
-            String qu = "update members set mname=?,mgrade=?,memail=?,mcontactnum=?,mstatus=? where mregID='"+mregid+"' ";
+//            Label lblmregid = null;
+//              String mregid = lblmregid.getText();
+            String qu = "update members "
+                    + "set mname=?,mgrade=?,memail=?,mcontactnum=?,mstatus=? "
+                    + "where mregID=? ";
 
             PreparedStatement pst = DBconnect.connect().prepareStatement(qu);
            
             // pst = conn.prepareStatement(qr);
+            // pst.setString(1, this.mregID);
             pst.setString(1, this.mname);
             pst.setString(2, this.mgrade);
             pst.setString(3, this.memail);
             pst.setString(4, this.mcontactnum);
             pst.setString(5, this.mstatus);
-           // pst.setString(6, this.mregID);
+            pst.setString(6, this.mregID);
 
             pst.execute();
 System.out.println(pst);
