@@ -63,6 +63,11 @@ Calendar cal = Calendar.getInstance();
         jLabel4 = new javax.swing.JLabel();
         lrtotfine = new javax.swing.JLabel();
         btnrreturn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtrnote = new javax.swing.JTextArea();
+        jLabel6 = new javax.swing.JLabel();
+        btnfinedayok = new javax.swing.JButton();
+        btnmemidok = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -77,19 +82,24 @@ Calendar cal = Calendar.getInstance();
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
 
         rbid1.setText("jTextField1");
-        jPanel1.add(rbid1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 136, -1));
+        jPanel1.add(rbid1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 136, 30));
 
         rbid2.setText("jTextField1");
-        jPanel1.add(rbid2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 136, -1));
+        jPanel1.add(rbid2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 136, 30));
 
         rmemid.setText("jTextField1");
-        jPanel1.add(rmemid, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 136, -1));
+        rmemid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rmemidActionPerformed(evt);
+            }
+        });
+        jPanel1.add(rmemid, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 136, 30));
 
         jLabel3.setText("Fine per Day");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
 
         rdayfine.setText("jTextField1");
-        jPanel1.add(rdayfine, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 136, -1));
+        jPanel1.add(rdayfine, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 136, 30));
 
         jLabel4.setText("Total Fine");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, -1, -1));
@@ -105,7 +115,32 @@ Calendar cal = Calendar.getInstance();
         });
         jPanel1.add(btnrreturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 120, 48));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 360, 340));
+        txtrnote.setColumns(20);
+        txtrnote.setRows(5);
+        jScrollPane1.setViewportView(txtrnote);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, -1, -1));
+
+        jLabel6.setText("Note");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 70, -1, -1));
+
+        btnfinedayok.setText("OK");
+        btnfinedayok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnfinedayokActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnfinedayok, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, 50, 30));
+
+        btnmemidok.setText("OK");
+        btnmemidok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnmemidokActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnmemidok, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 50, 30));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 610, 340));
 
         jLabel5.setText("    RETURN BOOKS");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 110, 30));
@@ -143,6 +178,33 @@ Calendar cal = Calendar.getInstance();
         
     }//GEN-LAST:event_btnrreturnActionPerformed
 
+    private void rmemidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rmemidActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rmemidActionPerformed
+
+    private void btnmemidokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmemidokActionPerformed
+        // TODO add your handling code here:
+       
+        String dayfine = rdayfine.getText();
+         ReturnBookModel b = new ReturnBookModel(dayfine);
+            b.showBooks();
+
+        
+
+// showBooks();
+        
+    }//GEN-LAST:event_btnmemidokActionPerformed
+
+    private void btnfinedayokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfinedayokActionPerformed
+        // TODO add your handling code here:
+        
+        String id = rmemid.getText();
+         ReturnBookModel b = new ReturnBookModel(id);
+            b.calculateFine();
+
+        
+    }//GEN-LAST:event_btnfinedayokActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -179,17 +241,22 @@ Calendar cal = Calendar.getInstance();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnfinedayok;
+    private javax.swing.JButton btnmemidok;
     private javax.swing.JButton btnrreturn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lrtotfine;
     private javax.swing.JTextField rbid1;
     private javax.swing.JTextField rbid2;
     private javax.swing.JTextField rdayfine;
     private javax.swing.JTextField rmemid;
+    private javax.swing.JTextArea txtrnote;
     // End of variables declaration//GEN-END:variables
 }
