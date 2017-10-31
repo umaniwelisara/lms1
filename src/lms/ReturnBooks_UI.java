@@ -8,9 +8,12 @@ package lms;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -183,24 +186,40 @@ Calendar cal = Calendar.getInstance();
     }//GEN-LAST:event_rmemidActionPerformed
 
     private void btnmemidokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmemidokActionPerformed
-        // TODO add your handling code here:
-       
-        String dayfine = rdayfine.getText();
-         ReturnBookModel b = new ReturnBookModel(dayfine);
-            b.showBooks();
-
-        
-
+            try {
+                // TODO add your handling code here:
+                String memid = rmemid.getText();
+                String book1 = rbid1.getText();
+                String book2 = rbid2.getText();
+                String dayfine =rdayfine.getText();
+                String totfine = lrtotfine.getText();
+                
+                ReturnBooksModel r1 = new ReturnBooksModel( memid, book1, book2, dayfine, totfine);
+                r1.showBooks();
+                
 // showBooks();
+            } catch (SQLException ex) {
+                Logger.getLogger(ReturnBooks_UI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           
         
     }//GEN-LAST:event_btnmemidokActionPerformed
 
     private void btnfinedayokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfinedayokActionPerformed
-        // TODO add your handling code here:
-        
-        String id = rmemid.getText();
-         ReturnBookModel b = new ReturnBookModel(id);
-            b.calculateFine();
+            try {
+                // TODO add your handling code here:
+                
+                String memid = rmemid.getText();
+                String book1 = rbid1.getText();
+                String book2 = rbid2.getText();
+                String dayfine =rdayfine.getText();
+                String totfine = lrtotfine.getText();
+                
+                ReturnBooksModel r2 = new ReturnBooksModel( memid, book1, book2, dayfine, totfine);
+                r2.calculateFine();
+            } catch (SQLException ex) {
+                Logger.getLogger(ReturnBooks_UI.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
         
     }//GEN-LAST:event_btnfinedayokActionPerformed

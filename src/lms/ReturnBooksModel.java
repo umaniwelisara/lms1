@@ -30,14 +30,14 @@ public class ReturnBooksModel {
     private String book1;
     private String book2;
     //private String memid;
-    private String cdate;
+    private Date cdate;
     private String rdate;
     private String fineday;
     private String totfine;
     private String today;
     private String rmemid;
     private String rnote;
-    private String rdayfine;
+    private Double rdayfine;
     private String lrtotfine;
 
     private String rbid1;
@@ -46,7 +46,7 @@ public class ReturnBooksModel {
     public ReturnBooksModel() {
     }
 
-    ReturnBooksModel(String rmemid, String book1, String book2, String cdate, String rdate, String fineday, String totfine, String today, String note) {
+    ReturnBooksModel(String rmemid, String book1, String book2, Date cdate, String rdate, String fineday, String totfine, String today, String note) {
 
         this.rmemid = rmemid;
         this.book1 = book1;
@@ -73,7 +73,7 @@ public class ReturnBooksModel {
             pst.setString(3, this.book2);
 //            pst.setString(4, this.cdate.toString());
 //            pst.setString(5, this.rdate.toString());
-            pst.setString(4, this.cdate);
+            pst.setDate(4, (java.sql.Date) this.cdate);
             pst.setString(5, this.rdate);
             pst.setString(6, this.rnote);
 
@@ -89,7 +89,7 @@ public class ReturnBooksModel {
     public boolean showBooks() throws SQLException {
 
         try {
-            String id = rmemid.getText();
+            String id = rmemid;
             // memid.getString()=id;
             // SELECT id, name FROM manager WHERE name = "somename"
             String q = "select book1 from issuebooks where memid='" + id + "'";
@@ -98,8 +98,8 @@ public class ReturnBooksModel {
             String q2 = "select book2 from issuebooks where memid='" + id + "'";
             PreparedStatement pst2 = DBconnect.connect().prepareStatement(q2);
 
-            rbid1.setText(pst1);
-            rbid2.setText(pst2);
+            rbid1(pst1);
+            rbid2(pst2);
 
             return true;
         } catch (Exception e) {
@@ -109,10 +109,10 @@ public class ReturnBooksModel {
     }
 
     public double calculateFine() throws SQLException {
-        double a = rdayfine.getText();
+        Double a = rdayfine;
         // double tfine = a*7;
 
-        Date dbDate = cdate.getText();
+        Date dbDate = cdate;
 
         //today
         Date currentDate = new Date();
@@ -120,8 +120,8 @@ public class ReturnBooksModel {
         System.out.println(dateFormat.format(currentDate));
 
         //count seconds between dates
-        Duration duration = Duration.between(dbDate, currentDate);
-        int count = duration / (60 * 60 * 24);
+       // Duration duration = Duration.between(dbDate, currentDate);
+        //int count = duration / (60 * 60 * 24);
 
         //lrtotfine.setText(tfine);
         return count;
@@ -151,11 +151,11 @@ public class ReturnBooksModel {
         this.rmemid = rmemid;
     }
 
-    public String getCdate() {
+    public Date getCdate() {
         return cdate;
     }
 
-    public void setCdate(String cdate) {
+    public void setCdate(Date cdate) {
         this.cdate = cdate;
     }
 
