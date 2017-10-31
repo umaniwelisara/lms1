@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import net.proteanit.sql.DbUtils;
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 import lms.DBconnect;
 
 /**
@@ -61,7 +62,12 @@ public class ReturnBooksModel {
     }
 
     ReturnBooksModel(String memid, String book1, String book2, String dayfine, String totfine) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        this.rmemid = memid;
+        this.book1 = book1;
+        this.book2 = book2;
+        this.fineday = dayfine;
+        this.totfine = totfine;
     }
 
     public boolean insertReturnBook() {
@@ -86,7 +92,7 @@ public class ReturnBooksModel {
 
     }
 
-    public boolean showBooks() throws SQLException {
+    public String[] showBooks()  throws SQLException {
 
         try {
             String id = rmemid;
@@ -95,16 +101,23 @@ public class ReturnBooksModel {
             String q = "select book1 from issuebooks where memid='" + id + "'";
             PreparedStatement pst1 = DBconnect.connect().prepareStatement(q);
 
+            pst1.execute();
             String q2 = "select book2 from issuebooks where memid='" + id + "'";
             PreparedStatement pst2 = DBconnect.connect().prepareStatement(q2);
 
-            rbid1(pst1);
-            rbid2(pst2);
+            pst2.execute();
+             String[] booksarr = new String[2];
+             
+  //......................           
+            booksarr[] = {pst1,pst2};
+            //rbid1(pst1);
+            //rbid2(pst2);
 
-            return true;
+            return booksarr;
         } catch (Exception e) {
-            return false;
+           e.printStackTrace();
         }
+        return null;
 
     }
 
@@ -119,11 +132,16 @@ public class ReturnBooksModel {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         System.out.println(dateFormat.format(currentDate));
 
-        //count seconds between dates
-       // Duration duration = Duration.between(dbDate, currentDate);
-        //int count = duration / (60 * 60 * 24);
-
-        //lrtotfine.setText(tfine);
+       //count seconds between dates
+       long diffDay = currentDate.getTime() - dbDate.getTime();
+       TimeUnit.DAYS.convert(diffDay, TimeUnit.MILLISECONDS);
+       
+       
+        int count = (int) (diffDay / (60 * 60 * 60 * 24));
+//...................
+        lrtotfine.(count);
+        
+        
         return count;
     }
 
