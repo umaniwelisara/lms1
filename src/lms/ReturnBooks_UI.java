@@ -15,6 +15,7 @@ import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -25,27 +26,25 @@ public class ReturnBooks_UI extends javax.swing.JFrame {
     /**
      * Creates new form ReturnBooks_UI
      */
-    
-    
-        Connection conn = null;
+    Connection conn = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
-    
-    
+
     public ReturnBooks_UI() {
         initComponents();
         rmemid.setText("");
-            rbid1.setText("");
-            rbid2.setText("");
-            rdayfine.setText("");
-            lrtotfine.setText("N/A");
-            
-            conn = DBconnect.connect();
+        rbid1.setText("");
+        rbid2.setText("");
+        rdayfine.setText("");
+        lrtotfine.setText("N/A");
+
+        conn = DBconnect.connect();
     }
     //today
-  DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-Calendar cal = Calendar.getInstance();
+    DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+    Calendar cal = Calendar.getInstance();
 //System.out.println(df.format(cal.getTime()));
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -72,24 +71,33 @@ Calendar cal = Calendar.getInstance();
         btnfinedayok = new javax.swing.JButton();
         btnmemidok = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBounds(new java.awt.Rectangle(0, 0, 1200, 480));
+        setMinimumSize(new java.awt.Dimension(1170, 480));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Member ID");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Book ID");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, -1));
 
+        rbid1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         rbid1.setText("jTextField1");
         jPanel1.add(rbid1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 136, 30));
 
+        rbid2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         rbid2.setText("jTextField1");
         jPanel1.add(rbid2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 136, 30));
 
+        rmemid.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         rmemid.setText("jTextField1");
         rmemid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,35 +106,43 @@ Calendar cal = Calendar.getInstance();
         });
         jPanel1.add(rmemid, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 136, 30));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Fine per Day");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, -1));
 
+        rdayfine.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         rdayfine.setText("jTextField1");
         jPanel1.add(rdayfine, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 136, 30));
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Total Fine");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 214, -1, 20));
 
+        lrtotfine.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lrtotfine.setText("jLabel5");
-        jPanel1.add(lrtotfine, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 136, -1));
+        jPanel1.add(lrtotfine, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 136, 30));
 
+        btnrreturn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnrreturn.setText("RETURN");
         btnrreturn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnrreturnActionPerformed(evt);
             }
         });
-        jPanel1.add(btnrreturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 120, 48));
+        jPanel1.add(btnrreturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 90, 48));
 
         txtrnote.setColumns(20);
+        txtrnote.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtrnote.setRows(5);
         jScrollPane1.setViewportView(txtrnote);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, -1, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, 160, 130));
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Note");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 70, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 80, -1, -1));
 
+        btnfinedayok.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnfinedayok.setText("OK");
         btnfinedayok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,6 +151,7 @@ Calendar cal = Calendar.getInstance();
         });
         jPanel1.add(btnfinedayok, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, 50, 30));
 
+        btnmemidok.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnmemidok.setText("OK");
         btnmemidok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,29 +160,43 @@ Calendar cal = Calendar.getInstance();
         });
         jPanel1.add(btnmemidok, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 50, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 610, 340));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 540, 340));
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 153, 204));
         jLabel5.setText("    RETURN BOOKS");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 110, 30));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 220, 30));
+
+        jButton1.setText("<");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 10, 70, 40));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/il_570xN.765233598_ch2n.jpg"))); // NOI18N
+        jLabel7.setText("jLabel7");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 70, 470, 360));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnrreturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrreturnActionPerformed
         // TODO add your handling code here:
-        
+
         String memid = rmemid.getText();
         String book1 = rbid1.getText();
-         String book2 = rbid2.getText();
-          String dayfine =rdayfine.getText();
+        String book2 = rbid2.getText();
+        String dayfine = rdayfine.getText();
         String totfine = lrtotfine.getText();
-        
-        ReturnBooksModel rbm = new ReturnBooksModel( memid, book1, book2, dayfine, totfine);
-        
-         boolean successStatus = rbm.insertReturnBook();
+
+        ReturnBooksModel rbm = new ReturnBooksModel(memid, book1, book2, dayfine, totfine);
+
+        boolean successStatus = rbm.insertReturnBook();
         if (successStatus) {
             JOptionPane.showMessageDialog(this, "Successfully inserted to db");
-           
+
             rmemid.setText("");
             rbid1.setText("");
             rbid2.setText("");
@@ -174,11 +205,8 @@ Calendar cal = Calendar.getInstance();
         } else {
             JOptionPane.showMessageDialog(this, "Error in inserting to db");
         }
-        
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_btnrreturnActionPerformed
 
     private void rmemidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rmemidActionPerformed
@@ -186,43 +214,56 @@ Calendar cal = Calendar.getInstance();
     }//GEN-LAST:event_rmemidActionPerformed
 
     private void btnmemidokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmemidokActionPerformed
-            try {
-                // TODO add your handling code here:
-                String memid = rmemid.getText();
-                String book1 = rbid1.getText();
-                String book2 = rbid2.getText();
-                String dayfine =rdayfine.getText();
-                String totfine = lrtotfine.getText();
-                
-                ReturnBooksModel r1 = new ReturnBooksModel( memid, book1, book2, dayfine, totfine);
-                r1.showBooks();
-                
+        try {
+            // TODO add your handling code here:
+            String memid = rmemid.getText();
+            String book1 = rbid1.getText();
+            String book2 = rbid2.getText();
+            String dayfine = rdayfine.getText();
+            String totfine = lrtotfine.getText();
+
+            ReturnBooksModel r1 = new ReturnBooksModel(memid, book1, book2, dayfine, totfine);
+
+            rbid1.setText(r1.showBooks1());
+            rbid2.setText(r1.showBooks2());
+
 // showBooks();
-            } catch (SQLException ex) {
-                Logger.getLogger(ReturnBooks_UI.class.getName()).log(Level.SEVERE, null, ex);
-            }
-           
-        
+        } catch (SQLException ex) {
+            Logger.getLogger(ReturnBooks_UI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
     }//GEN-LAST:event_btnmemidokActionPerformed
 
     private void btnfinedayokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfinedayokActionPerformed
-            try {
-                // TODO add your handling code here:
-                
-                String memid = rmemid.getText();
-                String book1 = rbid1.getText();
-                String book2 = rbid2.getText();
-                String dayfine =rdayfine.getText();
-                String totfine = lrtotfine.getText();
-                
-                ReturnBooksModel r2 = new ReturnBooksModel( memid, book1, book2, dayfine, totfine);
-                r2.calculateFine();
-            } catch (SQLException ex) {
-                Logger.getLogger(ReturnBooks_UI.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        try {
+            // TODO add your handling code here:
 
-        
+            String memid = rmemid.getText();
+            String book1 = rbid1.getText();
+            String book2 = rbid2.getText();
+            String dayfine = rdayfine.getText();
+            String totfine = lrtotfine.getText();
+
+            ReturnBooksModel r2 = new ReturnBooksModel(memid, book1, book2, dayfine, totfine);
+
+            float dayf = Float.parseFloat(dayfine);
+            float calc = dayf * r2.countdays();
+            String s = Float.toString(calc);
+            lrtotfine.setText(s);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ReturnBooks_UI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
     }//GEN-LAST:event_btnfinedayokActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        new LibraryHome_UI().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -263,12 +304,14 @@ Calendar cal = Calendar.getInstance();
     private javax.swing.JButton btnfinedayok;
     private javax.swing.JButton btnmemidok;
     private javax.swing.JButton btnrreturn;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lrtotfine;

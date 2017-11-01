@@ -16,6 +16,7 @@ import java.util.Date;
 import net.proteanit.sql.DbUtils;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
+import javax.swing.JOptionPane;
 import lms.DBconnect;
 
 /**
@@ -62,7 +63,7 @@ public class ReturnBooksModel {
     }
 
     ReturnBooksModel(String memid, String book1, String book2, String dayfine, String totfine) {
-        
+
         this.rmemid = memid;
         this.book1 = book1;
         this.book2 = book2;
@@ -92,37 +93,53 @@ public class ReturnBooksModel {
 
     }
 
-    public String[] showBooks()  throws SQLException {
+    public String showBooks1() throws SQLException {
 
         try {
-            String id = rmemid;
-            // memid.getString()=id;
-            // SELECT id, name FROM manager WHERE name = "somename"
-            String q = "select book1 from issuebooks where memid='" + id + "'";
-            PreparedStatement pst1 = DBconnect.connect().prepareStatement(q);
+            String q = "select book1 from issuebooks where memid=?";
+            pst = DBconnect.connect().prepareStatement(q);
+            pst.setString(1, this.rmemid);
+            rs = pst.executeQuery();
 
-            pst1.execute();
-            String q2 = "select book2 from issuebooks where memid='" + id + "'";
-            PreparedStatement pst2 = DBconnect.connect().prepareStatement(q2);
+            if (rs.next()) {
+                String b1 = rs.getString("book1");
+                // rbid1.setText(b1);
+                //rbid1=(b1);
+                return b1;
+            }
 
-            pst2.execute();
-             String[] booksarr = new String[2];
-             
-  //......................           
-            booksarr[] = {pst1,pst2};
-            //rbid1(pst1);
-            //rbid2(pst2);
-
-            return booksarr;
         } catch (Exception e) {
-           e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
         }
         return null;
 
     }
 
-    public double calculateFine() throws SQLException {
-        Double a = rdayfine;
+    public String showBooks2() throws SQLException {
+
+        try {
+            String q = "select book2 from issuebooks where memid=?";
+            pst = DBconnect.connect().prepareStatement(q);
+            pst.setString(1, this.rmemid);
+            rs = pst.executeQuery();
+
+            if (rs.next()) {
+
+                String b2 = rs.getString("book2");
+                // rbid2.setText(b1);
+                //rbid2=(b2);
+                return b2;
+
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return null;
+
+    }
+
+    public float countdays() throws SQLException {
+        //float a = rdayfine;
         // double tfine = a*7;
 
         Date dbDate = cdate;
@@ -132,17 +149,15 @@ public class ReturnBooksModel {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         System.out.println(dateFormat.format(currentDate));
 
-       //count seconds between dates
-       long diffDay = currentDate.getTime() - dbDate.getTime();
-       TimeUnit.DAYS.convert(diffDay, TimeUnit.MILLISECONDS);
-       
-       
-        int count = (int) (diffDay / (60 * 60 * 60 * 24));
+        //count seconds between dates
+        long diffDay = currentDate.getTime() - dbDate.getTime();
+        TimeUnit.DAYS.convert(diffDay, TimeUnit.MILLISECONDS);
+
+        float totdays = (float) (diffDay / (1000 * 60 * 60 * 24));
 //...................
-        lrtotfine.(count);
-        
-        
-        return count;
+        // lrtotfine.(count);
+
+        return totdays;
     }
 
     public String getBook1() {

@@ -100,10 +100,14 @@ public class LibraryHome_UI extends javax.swing.JFrame {
 
     private void btnmanagecheckinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmanagecheckinActionPerformed
         // TODO add your handling code here:
+        new ReturnBooks_UI().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnmanagecheckinActionPerformed
 
     private void btnmanagecheckin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmanagecheckin1ActionPerformed
         // TODO add your handling code here:
+        new IssueBooks_UI().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnmanagecheckin1ActionPerformed
 
     /**

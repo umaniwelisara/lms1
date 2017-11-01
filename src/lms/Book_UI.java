@@ -231,23 +231,23 @@ public class Book_UI extends javax.swing.JFrame {
         String qty = txtbqty.getText();
 
         
-         //.......................................................................................... modify
-             //validation
-        
-        
-        String pattern4 = "\\d{1,10}";
-        
-        if((txtbname.getText()).equals(" ")|| (txtbauthor.getText()).equals(" ")){
-        JOptionPane.showMessageDialog(null, "Please fill the required fields correctly");
-        }
-        
-        if(cmbbcategory.getSelectedItem() == "Choose book category"){
-       JOptionPane.showMessageDialog(null, "Please choose a book category from the dropdown.");
-        }
-        if(txtbqty.getText() != pattern4 || txtbqty.getText() == null ){
-       JOptionPane.showMessageDialog(null, "Please enter an amount.");
-       }
-        
+//         //.......................................................................................... modify
+//             //validation
+//        
+//        
+//        String pattern4 = "\\d{1,10}";
+//        
+//        if((txtbname.getText()).equals(" ")|| (txtbauthor.getText()).equals(" ")){
+//        JOptionPane.showMessageDialog(null, "Please fill the required fields correctly");
+//        }
+//        
+//        if(cmbbcategory.getSelectedItem() == "Choose book category"){
+//       JOptionPane.showMessageDialog(null, "Please choose a book category from the dropdown.");
+//        }
+//        if(txtbqty.getText() != pattern4 || txtbqty.getText() == null ){
+//       JOptionPane.showMessageDialog(null, "Please enter an amount.");
+//       }
+//        
        //.....................................................................................................
         
         
