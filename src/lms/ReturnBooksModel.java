@@ -138,26 +138,46 @@ public class ReturnBooksModel {
 
     }
 
-    public float countdays() throws SQLException {
-        //float a = rdayfine;
-        // double tfine = a*7;
+//    public float countdays() throws SQLException {
+//        //float a = rdayfine;
+//        // double tfine = a*7;
+//
+//        Date dbDate = cdate;
+//
+//        //today
+//        Date currentDate = new Date();
+//        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//        System.out.println(dateFormat.format(currentDate));
+//
+//        //count seconds between dates
+//        long diffDay = currentDate.getTime() - dbDate.getTime();
+//        TimeUnit.DAYS.convert(diffDay, TimeUnit.MILLISECONDS);
+//
+//        float totdays = (float) (diffDay / (1000 * 60 * 60 * 24));
+////...................
+//        // lrtotfine.(count);
+//
+//        return totdays;
+//    }
+    //private static SimpleDateFormat = simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
+    public static long getDayCount(String s,String e){
+    
+    long diff = -1;
+        try {
+            
+            Date currentDate = new Date();
+            Date dStart = currentDate;
+            
 
-        Date dbDate = cdate;
-
-        //today
-        Date currentDate = new Date();
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        System.out.println(dateFormat.format(currentDate));
-
-        //count seconds between dates
-        long diffDay = currentDate.getTime() - dbDate.getTime();
-        TimeUnit.DAYS.convert(diffDay, TimeUnit.MILLISECONDS);
-
-        float totdays = (float) (diffDay / (1000 * 60 * 60 * 24));
-//...................
-        // lrtotfine.(count);
-
-        return totdays;
+//get the dbdate
+            Date dEnd = SimpleDateFormat.parse(e);
+            
+            diff=Math.round((dEnd.getTime()-dStart.getTime()) / (double) 86400000);
+            
+        } catch (Exception e) {
+        }
+    
+    return diff;
     }
 
     public String getBook1() {

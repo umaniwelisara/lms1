@@ -51,14 +51,14 @@ public class BookModel {
 //    }
     public boolean insertBook() {
         try {
-            String s = "insert into books(bname,bauthor,bcategory,bqty) values (?,?,?,?)";
+            String s = "insert into books (bname,bauthor,bcategory,bqty) values (?,?,?,?)";
             PreparedStatement pst = DBconnect.connect().prepareStatement(s);
             
             pst.setString(1, this.bname);
             pst.setString(2, this.bauthor);
             pst.setString(3, this.bcategory);
             pst.setString(4, this.bqty);
-
+            pst.execute();
             return true;
         } catch (SQLException ex) {
             return false;

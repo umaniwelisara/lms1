@@ -32,7 +32,7 @@ public class LibraryHome_UI extends javax.swing.JFrame {
         btnmanagecheckin = new javax.swing.JButton();
         btnmanagecheckin1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -77,9 +77,8 @@ public class LibraryHome_UI extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/library.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 320, 330));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/children-reading-book-library-looking-41465116.jpg"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 10, 400, 410));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/images.jpg"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 120, 230, 230));
 
         setSize(new java.awt.Dimension(1196, 479));
         setLocationRelativeTo(null);
@@ -154,6 +153,6 @@ public class LibraryHome_UI extends javax.swing.JFrame {
     private javax.swing.JButton btnmanagecheckin1;
     private javax.swing.JButton btnmanagemembers;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }

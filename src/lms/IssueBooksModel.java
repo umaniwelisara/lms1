@@ -16,29 +16,29 @@ import java.sql.Statement;
  * @author Umani Welisara
  */
 public class IssueBooksModel {
+
     Connection conn = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
 
     private String book1;
     private String book2;
-	private String memid;
-	private String cdate;
-	private String rdate;
- int passDate = 0;
+    private String memid;
+    private String cdate;
+    private String rdate;
+    int passDate = 0;
+
     public IssueBooksModel() {
-	}
+    }
 
     IssueBooksModel(String memid, String book1, String book2, String cdate, String rdate) {
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-   this.memid=memid;
-    this.book1=book1;
-    this.book2=book2;
-    this.cdate=cdate;
-    this.rdate=rdate;
-    
-    
-    
+        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.memid = memid;
+        this.book1 = book1;
+        this.book2 = book2;
+        this.cdate = cdate;
+        this.rdate = rdate;
+
     }
 
 //    public IssueBooksModel(String memid, String book1, String book2, String cdate, String rdate) {
@@ -53,10 +53,9 @@ public class IssueBooksModel {
 //    IssueBooksModel(String memid, String book1, String book2, String cdate, String cdate0, String rdate) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 //    }
-    
-     public boolean insertIssueBook(){
-         try {
-             String ibook = "insert into issuebooks(memid,book1,book2,cdate,rdate) values (?,?,?,?,?)";
+    public boolean insertIssueBook() {
+        try {
+            String ibook = "insert into issuebooks (memid,book1,book2,cdate,rdate) values (?,?,?,?,?)";
             PreparedStatement pst = DBconnect.connect().prepareStatement(ibook);
             pst.setString(1, this.memid);
             pst.setString(2, this.book1);
@@ -64,15 +63,15 @@ public class IssueBooksModel {
 //            pst.setString(4, this.cdate.toString());
 //            pst.setString(5, this.rdate.toString());
             pst.setString(4, this.cdate);
-          pst.setString(5, this.rdate);
-            
-               pst.execute();
-             
-             return true;
-         } catch (Exception e) {
-              return false;
-         }
-    
+            pst.setString(5, this.rdate);
+
+            pst.execute();
+
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+
     }
 
     public String getBookID1() {
@@ -90,8 +89,6 @@ public class IssueBooksModel {
     public void setBookID2(String bookID2) {
         this.book2 = bookID2;
     }
-
-  
 
     public String getMemberID() {
         return memid;
@@ -116,9 +113,5 @@ public class IssueBooksModel {
     public void setDayOfReturn(String dayOfReturn) {
         this.rdate = dayOfReturn;
     }
-        
-        
-   
-    
-    
+
 }

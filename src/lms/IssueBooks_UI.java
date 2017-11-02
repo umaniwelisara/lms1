@@ -19,6 +19,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+
 /**
  *
  * @author Umani Welisara
@@ -28,22 +29,18 @@ public class IssueBooks_UI extends javax.swing.JFrame {
     /**
      * Creates new form payment
      */
-    
-    
-    
     Connection conn = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
-    
-    
+
     public IssueBooks_UI() {
         initComponents();
-         bbbid_1.setText("");
-         bbbid_2.setText("");
+        bbbid_1.setText("");
+        bbbid_2.setText("");
         bbmid.setText("");
-        
-         conn = DBconnect.connect();
-        
+
+        conn = DBconnect.connect();
+
 //         try {
 //            new Thread(new Runnable() {
 //
@@ -74,37 +71,29 @@ public class IssueBooks_UI extends javax.swing.JFrame {
 //        } catch (Exception e) {
 //            e.printStackTrace();
 //        }
-         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-Calendar cal = Calendar.getInstance();
-System.out.println(df.format(cal.getTime()));
-lblcdate.setText(df.format(cal.getTime()));
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar cal = Calendar.getInstance();
+        System.out.println(df.format(cal.getTime()));
+        lblcdate.setText(df.format(cal.getTime()));
 //        //;;;;;;;;;;;;;;;;;
 
- Date currentDate = new Date();
- DateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd");
+        Date currentDate = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         System.out.println(dateFormat.format(currentDate));
-  
+
         // convert date to calendar
         Calendar c = Calendar.getInstance();
         c.setTime(currentDate);
         // manipulate date
-         c.add(Calendar.DATE, 7);
-          // convert calendar to date
+        c.add(Calendar.DATE, 7);
+        // convert calendar to date
         Date currentDatePlusOne = c.getTime();
         System.out.println(dateFormat.format(currentDatePlusOne));
-        
-        
-          lblrdate.setText(dateFormat.format(currentDatePlusOne));
-//    //'''''''''''''''''
-         
-          
-       
-         
-    }
 
-    
-    
-    
+        lblrdate.setText(dateFormat.format(currentDatePlusOne));
+//    //'''''''''''''''''
+
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -200,19 +189,19 @@ lblcdate.setText(df.format(cal.getTime()));
 
     private void btnbbborrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbbborrowActionPerformed
         // TODO add your handling code here:
-      
-         String memid = bbmid.getText();
+
+        String memid = bbmid.getText();
         String book1 = bbbid_1.getText();
-         String book2 = bbbid_2.getText();
-          String cdate =lblcdate.getText();
+        String book2 = bbbid_2.getText();
+        String cdate = lblcdate.getText();
         String rdate = lblrdate.getText();
-       
-        IssueBooksModel ibm = new IssueBooksModel( memid, book1, book2, cdate, rdate);
-        
-         boolean successStatus = ibm.insertIssueBook();
+
+        IssueBooksModel ibm = new IssueBooksModel(memid, book1, book2, cdate, rdate);
+
+        boolean successStatus = ibm.insertIssueBook();
         if (successStatus) {
             JOptionPane.showMessageDialog(this, "Successfully inserted to db");
-           
+
             bbmid.setText("");
             bbbid_1.setText("");
             bbbid_2.setText("");
@@ -221,15 +210,15 @@ lblcdate.setText(df.format(cal.getTime()));
         } else {
             JOptionPane.showMessageDialog(this, "Error in inserting to db");
         }
-        
-        
+
+
     }//GEN-LAST:event_btnbbborrowActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         new LibraryHome_UI().setVisible(true);
         this.setVisible(false);
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

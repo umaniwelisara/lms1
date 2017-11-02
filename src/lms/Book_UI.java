@@ -5,6 +5,7 @@
  */
 package lms;
 
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -85,7 +86,6 @@ public class Book_UI extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -184,6 +184,11 @@ public class Book_UI extends javax.swing.JFrame {
 
         txtbqty.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtbqty.setText("jTextField1");
+        txtbqty.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtbqtyKeyTyped(evt);
+            }
+        });
         getContentPane().add(txtbqty, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 210, -1));
 
         tblbooks.setModel(new javax.swing.table.DefaultTableModel(
@@ -230,30 +235,23 @@ public class Book_UI extends javax.swing.JFrame {
         String category = cmbbcategory.getSelectedItem().toString();
         String qty = txtbqty.getText();
 
-        
-//         //.......................................................................................... modify
-//             //validation
-//        
-//        
-//        String pattern4 = "\\d{1,10}";
-//        
-//        if((txtbname.getText()).equals(" ")|| (txtbauthor.getText()).equals(" ")){
-//        JOptionPane.showMessageDialog(null, "Please fill the required fields correctly");
-//        }
-//        
-//        if(cmbbcategory.getSelectedItem() == "Choose book category"){
-//       JOptionPane.showMessageDialog(null, "Please choose a book category from the dropdown.");
-//        }
-//        if(txtbqty.getText() != pattern4 || txtbqty.getText() == null ){
-//       JOptionPane.showMessageDialog(null, "Please enter an amount.");
-//       }
-//        
+       
+         //qty validation-------------------------------------------------------------------------------
+        int num = Integer.parseInt(qty);
+        if(num > 10 || num < 1){
+        JOptionPane.showMessageDialog(null, "Please enter quantity between 1 - 10", "Error" , JOptionPane.ERROR_MESSAGE);
+        }
+    //required fields------------------------------------------------------------------------------------------------------
+    if(txtbname.getText() == null || txtbauthor.getText()== null || txtbqty.getText() == null ||
+                cmbbcategory.getSelectedItem() == "Choose book category" ){
+        JOptionPane.showMessageDialog(null, "Please fill the required fields","Error",JOptionPane.ERROR_MESSAGE);
+        }
        //.....................................................................................................
         
         
         BookModel b = new BookModel(name, author, category, qty);
         boolean successStatus = b.insertBook();
-        if (successStatus) {
+         if (successStatus) {
             JOptionPane.showMessageDialog(this, "Successfully inserted to db");
             tableload();
             lblbid.setText("");
@@ -301,6 +299,7 @@ public class Book_UI extends javax.swing.JFrame {
             String author = txtbauthor.getText();
             String category = cmbbcategory.getSelectedItem().toString();
             String qty = txtbqty.getText();
+            
             BookModel b = new BookModel(id,name, author, category, qty);
             boolean successStatus = b.updateBook();
 
@@ -390,6 +389,16 @@ public class Book_UI extends javax.swing.JFrame {
         
     
     }//GEN-LAST:event_txtsearchKeyReleased
+
+    private void txtbqtyKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbqtyKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE)|| c==KeyEvent.VK_DELETE)){
+        evt.consume();
+        }
+        
+        
+    }//GEN-LAST:event_txtbqtyKeyTyped
 
     /**
      * @param args the command line arguments

@@ -54,7 +54,7 @@ public class MemberModel {
     public boolean insertMember() {
         try {
             String s = "insert into members (mname,mgrade,memail,mcontactnum,mstatus) values (?,?,?,?,?)";
-            PreparedStatement pst = DBconnect.connect().prepareStatement(s);
+             PreparedStatement pst = DBconnect.connect().prepareStatement(s);
             pst.setString(1, this.mname);
             pst.setString(2, this.mgrade);
             pst.setString(3, this.memail);

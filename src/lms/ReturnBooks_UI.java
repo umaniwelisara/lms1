@@ -72,7 +72,7 @@ public class ReturnBooks_UI extends javax.swing.JFrame {
         btnmemidok = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(0, 0, 1200, 480));
@@ -175,9 +175,8 @@ public class ReturnBooks_UI extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 10, 70, 40));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/il_570xN.765233598_ch2n.jpg"))); // NOI18N
-        jLabel7.setText("jLabel7");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 70, 470, 360));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/b55ca3b361d5cf192a22b7a27db43eb9_outside-book-return-gibbons-municipal-library-library-book-return-clipart_350-270.jpeg"))); // NOI18N
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 100, 350, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -311,7 +310,7 @@ public class ReturnBooks_UI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lrtotfine;

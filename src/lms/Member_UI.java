@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 
@@ -86,7 +87,6 @@ public class Member_UI extends javax.swing.JFrame {
         txtmvisible = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1170, 420));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -187,7 +187,7 @@ public class Member_UI extends javax.swing.JFrame {
         getContentPane().add(txtmconnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 200, -1));
 
         cmbmstatus.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cmbmstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enable", "Disable", "Select one" }));
+        cmbmstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select one", "Enable", "Disable", " " }));
         cmbmstatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbmstatusActionPerformed(evt);
@@ -241,6 +241,28 @@ public class Member_UI extends javax.swing.JFrame {
         String email = txtmemail.getText();
         String phone = txtmconnum.getText();
         String status = cmbmstatus.getSelectedItem().toString();
+        
+        //email validation..................
+        if(!(Pattern.matches("^[a-zA-Z0-9]+[0]{1}+[a-zA-Z0-9]+[.]{1}+[a-zA-Z0-9]+$", email))){
+        
+        JOptionPane.showMessageDialog(null, "Please enter a valied email","Error",JOptionPane.ERROR_MESSAGE);
+        
+        }
+        
+        //phone validation..........................
+        if(!(Pattern.matches("^(1\\-)?[0-9]{3}\\-?[0-9]{3}\\-?[0-9]{4}$", phone))){
+        
+        JOptionPane.showMessageDialog(null, "Please enter a valied phone number","Error",JOptionPane.ERROR_MESSAGE);
+        
+        }
+        //check the fields are not empty.....................................................................
+        if(txtmname.getText() == null || txtmemail.getText()== null || txtmconnum.getText() == null ||
+                cmbmstatus.getSelectedItem() == "Select one" || cmbmgrade.getSelectedItem() == "choose the grade"  ){
+        JOptionPane.showMessageDialog(null, "Please fill the required fields","Error",JOptionPane.ERROR_MESSAGE);
+        }
+        
+        
+        
         MemberModel m = new MemberModel(name, grade, email, phone, status);
         boolean successStatus = m.insertMember();
         if (successStatus) {
@@ -248,12 +270,13 @@ public class Member_UI extends javax.swing.JFrame {
 
             tableload();
 
+            
             lblmregid.setText("");
             txtmname.setText("");
             cmbmgrade.setSelectedIndex(0);
             txtmemail.setText("");
             txtmconnum.setText("");
-            cmbmstatus.setSelectedIndex(2);
+            cmbmstatus.setSelectedIndex(0);
         } else {
             JOptionPane.showMessageDialog(this, "Error in inserting to db");
         }
@@ -279,23 +302,36 @@ public class Member_UI extends javax.swing.JFrame {
             String phone = txtmconnum.getText();
             String status = cmbmstatus.getSelectedItem().toString();
             
+            //email validation..................
+        if(!(Pattern.matches("^[a-zA-Z0-9]+[0]{1}+[a-zA-Z0-9]+[.]{1}+[a-zA-Z0-9]+$", email))){
+        
+        JOptionPane.showMessageDialog(null, "Please enter a valied email","Error",JOptionPane.ERROR_MESSAGE);
+        
+        }
+        else{
+        
+        JOptionPane.showMessageDialog(null, "Please enter a valied email","Error",JOptionPane.ERROR_MESSAGE);
+        
+        }
+            
+        //.....................................    
             MemberModel m = new MemberModel(id,name, grade, email, phone, status);
             boolean successStatus = m.updateMember();
 
-            if (successStatus) {
+             if (successStatus) {
                 JOptionPane.showMessageDialog(this, "Successfully updated");
                 tableload();
                 lblmregid.setText("");
                 txtmname.setText("");
-
                 cmbmgrade.setSelectedIndex(0);
                 txtmemail.setText("");
                 txtmconnum.setText("");
-                cmbmstatus.setSelectedIndex(2);
+                cmbmstatus.setSelectedIndex(0);
 
             } else {
                 JOptionPane.showMessageDialog(this, "Error in updating");
             }
+
 
         }
 
