@@ -39,11 +39,11 @@ public class ReturnBooksModel {
     private String today;
     private String rmemid;
     
-    private Double rdayfine;
-    private String lrtotfine;
+  //  private Double rdayfine;
+  //  private String lrtotfine;
 
-    private String rbid1;
-    private String rbid2;
+   // private String rbid1;
+   // private String rbid2;
 
     public ReturnBooksModel() {
     }
@@ -65,17 +65,14 @@ public class ReturnBooksModel {
             pst.setString(1, this.rmemid);
             pst.setString(2, this.book1);
             pst.setString(3, this.book2);
-//            pst.setString(4, this.cdate.toString());
-//            pst.setString(5, this.rdate.toString());
-//            pst.setDate(4, (java.sql.Date) this.cdate);
-//            pst.setString(5, this.rdate);
-//           
+
 
             pst.execute();//
 
             return true;
         } catch (Exception e) {
             e.printStackTrace();
+            
             return false;
         }
 
@@ -91,8 +88,7 @@ public class ReturnBooksModel {
 
             if (rs.next()) {
                 String b1 = rs.getString("book1");
-                // rbid1.setText(b1);
-                //rbid1=(b1);
+                
                 return b1;
             }
 
@@ -114,8 +110,7 @@ public class ReturnBooksModel {
             if (rs.next()) {
 
                 String b2 = rs.getString("book2");
-                // rbid2.setText(b1);
-                //rbid2=(b2);
+                
                 return b2;
 
             }
@@ -127,8 +122,7 @@ public class ReturnBooksModel {
     }
 
     public float countdays() throws SQLException {
-        //float a = rdayfine;
-        // double tfine = a*7;
+       
         
         //take cdate from the database 
         String issuedDatae = "";
@@ -148,7 +142,7 @@ public class ReturnBooksModel {
 
         SimpleDateFormat formatter1=new SimpleDateFormat("yyy-MM-dd");  
 
-        Date dbDate = formatter1.parse(issuedDatae);  //string eken date eka ganna dan
+        Date dbDate = formatter1.parse(issuedDatae);  //get date from string format
         
         
 
@@ -172,26 +166,7 @@ public class ReturnBooksModel {
         }
         return -1;
     }
-    //private static SimpleDateFormat = simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
-//    public static long getDayCount(String s,String e){
-//    
-//    long diff = -1;
-//        try {
-//            
-//            Date currentDate = new Date();
-//            Date dStart = currentDate;
-//            
-//
-////get the dbdate
-//            Date dEnd = SimpleDateFormat.parse(e);
-//            
-//            diff=Math.round((dEnd.getTime()-dStart.getTime()) / (double) 86400000);
-//            
-//        } catch (Exception e) {
-//        }
-//    
-//    return diff;
-//    }
+   
 
     public String getBook1() {
         return book1;

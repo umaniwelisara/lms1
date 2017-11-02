@@ -41,18 +41,7 @@ public class IssueBooksModel {
 
     }
 
-//    public IssueBooksModel(String memid, String book1, String book2, String cdate, String rdate) {
-//        this.memberID=memid;
-//        this.bookID1=book1;
-//        this.bookID2=book2;
-//        this.dayOfBorrowed=cdate;
-//        this.dayOfReturn=rdate;
-//        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
-//
-//    IssueBooksModel(String memid, String book1, String book2, String cdate, String cdate0, String rdate) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
+
     public boolean insertIssueBook() {
         try {
             String ibook = "insert into issuebooks (memid,book1,book2,cdate,rdate) values (?,?,?,?,?)";
@@ -60,8 +49,6 @@ public class IssueBooksModel {
             pst.setString(1, this.memid);
             pst.setString(2, this.book1);
             pst.setString(3, this.book2);
-//            pst.setString(4, this.cdate.toString());
-//            pst.setString(5, this.rdate.toString());
             pst.setString(4, this.cdate);
             pst.setString(5, this.rdate);
             

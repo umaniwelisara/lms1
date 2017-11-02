@@ -235,19 +235,19 @@ public class Book_UI extends javax.swing.JFrame {
         String category = cmbbcategory.getSelectedItem().toString();
         String qty = txtbqty.getText();
 
-       
-         //qty validation-------------------------------------------------------------------------------
-        int num = Integer.parseInt(qty);
-        if(num > 10 || num < 1){
-            JOptionPane.showMessageDialog(null, "Please enter quantity between 1 - 10", "Error" , JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-    //required fields------------------------------------------------------------------------------------------------------
+       //required fields------------------------------------------------------------------------------------------------------
     if(txtbname.getText() == null || txtbauthor.getText()== null || txtbqty.getText() == null ||
                 cmbbcategory.getSelectedItem() == "Choose book category" ){
         JOptionPane.showMessageDialog(null, "Please fill the required fields","Error",JOptionPane.ERROR_MESSAGE);
         return;
         }
+         //qty validation-------------------------------------------------------------------------------
+        int num = Integer.parseInt(qty);
+        if(num > 15 || num < 1){
+            JOptionPane.showMessageDialog(null, "Please enter quantity between 1 - 15", "Error" , JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+    
        //.....................................................................................................
         
         
@@ -301,6 +301,16 @@ public class Book_UI extends javax.swing.JFrame {
             String author = txtbauthor.getText();
             String category = cmbbcategory.getSelectedItem().toString();
             String qty = txtbqty.getText();
+            
+            
+         //qty validation-------------------------------------------------------------------------------
+        int num = Integer.parseInt(qty);
+        if(num > 15 || num < 1){
+            JOptionPane.showMessageDialog(null, "Please enter quantity between 1 - 15", "Error" , JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+   
+       //.....................................................................................................
             
             BookModel b = new BookModel(id,name, author, category, qty);
             boolean successStatus = b.updateBook();

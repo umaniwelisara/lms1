@@ -242,24 +242,27 @@ public class Member_UI extends javax.swing.JFrame {
         String phone = txtmconnum.getText();
         String status = cmbmstatus.getSelectedItem().toString();
         
+        //check the fields are not empty.....................................................................
+        if(txtmname.getText() == null || txtmemail.getText()== null || txtmconnum.getText() == null ||
+                cmbmstatus.getSelectedItem() == "Select one" || cmbmgrade.getSelectedItem() == "choose the grade"  ){
+        JOptionPane.showMessageDialog(null, "Please fill the required fields","Error",JOptionPane.ERROR_MESSAGE);
+        return;
+        }
+        
         //email validation..................
-        if(!(Pattern.matches("^[a-zA-Z0-9]+[0]{1}+[a-zA-Z0-9]+[.]{1}+[a-zA-Z0-9]+$", email))){
+        if(!(Pattern.matches("^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$", email))){
         
         JOptionPane.showMessageDialog(null, "Please enter a valied email","Error",JOptionPane.ERROR_MESSAGE);
-        
+        return;
         }
         
         //phone validation..........................
         if(!(Pattern.matches("^(1\\-)?[0-9]{3}\\-?[0-9]{3}\\-?[0-9]{4}$", phone))){
         
         JOptionPane.showMessageDialog(null, "Please enter a valied phone number","Error",JOptionPane.ERROR_MESSAGE);
+        return;
+        }
         
-        }
-        //check the fields are not empty.....................................................................
-        if(txtmname.getText() == null || txtmemail.getText()== null || txtmconnum.getText() == null ||
-                cmbmstatus.getSelectedItem() == "Select one" || cmbmgrade.getSelectedItem() == "choose the grade"  ){
-        JOptionPane.showMessageDialog(null, "Please fill the required fields","Error",JOptionPane.ERROR_MESSAGE);
-        }
         
         
         
@@ -303,17 +306,18 @@ public class Member_UI extends javax.swing.JFrame {
             String status = cmbmstatus.getSelectedItem().toString();
             
             //email validation..................
-        if(!(Pattern.matches("^[a-zA-Z0-9]+[0]{1}+[a-zA-Z0-9]+[.]{1}+[a-zA-Z0-9]+$", email))){
+        if(!(Pattern.matches("^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$", email))){
         
         JOptionPane.showMessageDialog(null, "Please enter a valied email","Error",JOptionPane.ERROR_MESSAGE);
-        
+        return;
         }
-        else{
         
-        JOptionPane.showMessageDialog(null, "Please enter a valied email","Error",JOptionPane.ERROR_MESSAGE);
+        //phone validation..........................
+        if(!(Pattern.matches("^(1\\-)?[0-9]{3}\\-?[0-9]{3}\\-?[0-9]{4}$", phone))){
         
+        JOptionPane.showMessageDialog(null, "Please enter a valied phone number","Error",JOptionPane.ERROR_MESSAGE);
+        return;
         }
-            
         //.....................................    
             MemberModel m = new MemberModel(id,name, grade, email, phone, status);
             boolean successStatus = m.updateMember();

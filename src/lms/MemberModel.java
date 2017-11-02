@@ -64,9 +64,12 @@ public class MemberModel {
 
             return true;
         } catch (SQLException e) {
-            return false;
+            //return false;
+            e.printStackTrace();
+            //
         }
-
+        return false;
+//
     }
 
     public boolean updateMember() {

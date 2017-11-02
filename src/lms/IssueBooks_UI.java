@@ -5,6 +5,7 @@
  */
 package lms;
 
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 //import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -41,41 +42,12 @@ public class IssueBooks_UI extends javax.swing.JFrame {
 
         conn = DBconnect.connect();
 
-//         try {
-//            new Thread(new Runnable() {
-//
-//                public void run() {
-//                    
-//                    while(true){
-//                        
-//                      java.util.Date d=new java.util.Date();
-//            String date=d.toString();
-//            String arr[]=date.split(" ");
-//            String newdate=arr[5]+"-"+arr[1]+"-"+arr[2];
-//            
-//            
-//         lblcdate.setText(newdate);
-//           
-//           
-//                      //...............
-//
-//                      
-//                      
-//                      
-//                      
-//                    }
-//                 
-//                }
-//            }).start();
-//            
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         Calendar cal = Calendar.getInstance();
         System.out.println(df.format(cal.getTime()));
         lblcdate.setText(df.format(cal.getTime()));
-//        //;;;;;;;;;;;;;;;;;
+//        
 
         Date currentDate = new Date();
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -133,6 +105,11 @@ public class IssueBooks_UI extends javax.swing.JFrame {
 
         bbmid.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         bbmid.setText("jTextField1");
+        bbmid.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                bbmidKeyTyped(evt);
+            }
+        });
         getContentPane().add(bbmid, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 100, 190, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -141,15 +118,25 @@ public class IssueBooks_UI extends javax.swing.JFrame {
 
         bbbid_1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         bbbid_1.setText("jTextField1");
+        bbbid_1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                bbbid_1KeyTyped(evt);
+            }
+        });
         getContentPane().add(bbbid_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 150, 190, -1));
 
         bbbid_2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         bbbid_2.setText("jTextField1");
+        bbbid_2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                bbbid_2KeyTyped(evt);
+            }
+        });
         getContentPane().add(bbbid_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 190, 190, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Current Date");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 230, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 240, -1, -1));
 
         lblcdate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblcdate.setText("jLabel5");
@@ -157,7 +144,7 @@ public class IssueBooks_UI extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Return Date");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 270, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 280, -1, -1));
 
         lblrdate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblrdate.setText("jLabel5");
@@ -220,6 +207,30 @@ public class IssueBooks_UI extends javax.swing.JFrame {
         this.setVisible(false);
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void bbmidKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bbmidKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE)|| c==KeyEvent.VK_DELETE)){
+        evt.consume();
+        }
+    }//GEN-LAST:event_bbmidKeyTyped
+
+    private void bbbid_1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bbbid_1KeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE)|| c==KeyEvent.VK_DELETE)){
+        evt.consume();
+        }
+    }//GEN-LAST:event_bbbid_1KeyTyped
+
+    private void bbbid_2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bbbid_2KeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE)|| c==KeyEvent.VK_DELETE)){
+        evt.consume();
+        }
+    }//GEN-LAST:event_bbbid_2KeyTyped
 
     /**
      * @param args the command line arguments
