@@ -65,9 +65,6 @@ public class ReturnBooks_UI extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         lrtotfine = new javax.swing.JLabel();
         btnrreturn = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtrnote = new javax.swing.JTextArea();
-        jLabel6 = new javax.swing.JLabel();
         btnfinedayok = new javax.swing.JButton();
         btnmemidok = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
@@ -131,17 +128,6 @@ public class ReturnBooks_UI extends javax.swing.JFrame {
         });
         jPanel1.add(btnrreturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 90, 48));
 
-        txtrnote.setColumns(20);
-        txtrnote.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtrnote.setRows(5);
-        jScrollPane1.setViewportView(txtrnote);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, 160, 130));
-
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setText("Note");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 80, -1, -1));
-
         btnfinedayok.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnfinedayok.setText("OK");
         btnfinedayok.addActionListener(new java.awt.event.ActionListener() {
@@ -160,7 +146,7 @@ public class ReturnBooks_UI extends javax.swing.JFrame {
         });
         jPanel1.add(btnmemidok, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 50, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 540, 340));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 450, 340));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 153, 204));
@@ -309,15 +295,12 @@ public class ReturnBooks_UI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lrtotfine;
     private javax.swing.JTextField rbid1;
     private javax.swing.JTextField rbid2;
     private javax.swing.JTextField rdayfine;
     private javax.swing.JTextField rmemid;
-    private javax.swing.JTextArea txtrnote;
     // End of variables declaration//GEN-END:variables
 }

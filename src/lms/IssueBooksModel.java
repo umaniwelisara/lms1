@@ -64,11 +64,12 @@ public class IssueBooksModel {
 //            pst.setString(5, this.rdate.toString());
             pst.setString(4, this.cdate);
             pst.setString(5, this.rdate);
-
+            
             pst.execute();
 
             return true;
         } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
 

@@ -239,12 +239,14 @@ public class Book_UI extends javax.swing.JFrame {
          //qty validation-------------------------------------------------------------------------------
         int num = Integer.parseInt(qty);
         if(num > 10 || num < 1){
-        JOptionPane.showMessageDialog(null, "Please enter quantity between 1 - 10", "Error" , JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please enter quantity between 1 - 10", "Error" , JOptionPane.ERROR_MESSAGE);
+            return;
         }
     //required fields------------------------------------------------------------------------------------------------------
     if(txtbname.getText() == null || txtbauthor.getText()== null || txtbqty.getText() == null ||
                 cmbbcategory.getSelectedItem() == "Choose book category" ){
         JOptionPane.showMessageDialog(null, "Please fill the required fields","Error",JOptionPane.ERROR_MESSAGE);
+        return;
         }
        //.....................................................................................................
         

@@ -38,7 +38,7 @@ public class ReturnBooksModel {
     private String totfine;
     private String today;
     private String rmemid;
-    private String rnote;
+    
     private Double rdayfine;
     private String lrtotfine;
 
@@ -46,20 +46,6 @@ public class ReturnBooksModel {
     private String rbid2;
 
     public ReturnBooksModel() {
-    }
-
-    ReturnBooksModel(String rmemid, String book1, String book2, Date cdate, String rdate, String fineday, String totfine, String today, String note) {
-
-        this.rmemid = rmemid;
-        this.book1 = book1;
-        this.book2 = book2;
-        this.cdate = cdate;
-        this.rdate = rdate;
-        this.fineday = fineday;
-        this.totfine = totfine;
-        this.today = today;
-        this.rnote = note;
-
     }
 
     ReturnBooksModel(String memid, String book1, String book2, String dayfine, String totfine) {
@@ -73,21 +59,23 @@ public class ReturnBooksModel {
 
     public boolean insertReturnBook() {
         try {
-            String rbook = "insert into issuebooks(memid,book1,book2,cdate,rdate,rnote) values (?,?,?,?,?,?)";
+            
+            String rbook = "UPDATE issuebooks SET returnStatus = 'returned' WHERE memid = ? AND book1 = ? AND book2 = ?;";
             PreparedStatement pst = DBconnect.connect().prepareStatement(rbook);
             pst.setString(1, this.rmemid);
             pst.setString(2, this.book1);
             pst.setString(3, this.book2);
 //            pst.setString(4, this.cdate.toString());
 //            pst.setString(5, this.rdate.toString());
-            pst.setDate(4, (java.sql.Date) this.cdate);
-            pst.setString(5, this.rdate);
-            pst.setString(6, this.rnote);
+//            pst.setDate(4, (java.sql.Date) this.cdate);
+//            pst.setString(5, this.rdate);
+//           
 
-            pst.execute();
+            pst.execute();//
 
             return true;
         } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
 
@@ -138,47 +126,72 @@ public class ReturnBooksModel {
 
     }
 
-//    public float countdays() throws SQLException {
-//        //float a = rdayfine;
-//        // double tfine = a*7;
-//
-//        Date dbDate = cdate;
-//
-//        //today
-//        Date currentDate = new Date();
-//        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-//        System.out.println(dateFormat.format(currentDate));
-//
-//        //count seconds between dates
-//        long diffDay = currentDate.getTime() - dbDate.getTime();
-//        TimeUnit.DAYS.convert(diffDay, TimeUnit.MILLISECONDS);
-//
-//        float totdays = (float) (diffDay / (1000 * 60 * 60 * 24));
-////...................
-//        // lrtotfine.(count);
-//
-//        return totdays;
-//    }
-    //private static SimpleDateFormat = simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
-    public static long getDayCount(String s,String e){
-    
-    long diff = -1;
+    public float countdays() throws SQLException {
+        //float a = rdayfine;
+        // double tfine = a*7;
+        
+        //take cdate from the database 
+        String issuedDatae = "";
         try {
-            
-            Date currentDate = new Date();
-            Date dStart = currentDate;
-            
+            String q = "select cdate from issuebooks where memid=?";
+            pst = DBconnect.connect().prepareStatement(q);
+            pst.setString(1, this.rmemid);
+            rs = pst.executeQuery();
 
-//get the dbdate
-            Date dEnd = SimpleDateFormat.parse(e);
-            
-            diff=Math.round((dEnd.getTime()-dStart.getTime()) / (double) 86400000);
-            
+            if (rs.next()) {
+                issuedDatae = rs.getString("cdate");
+                // rbid1.setText(b1);
+                //rbid1=(b1);
+            }
+
+        
+
+        SimpleDateFormat formatter1=new SimpleDateFormat("yyy-MM-dd");  
+
+        Date dbDate = formatter1.parse(issuedDatae);  //string eken date eka ganna dan
+        
+        
+
+        //today
+        Date currentDate = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        System.out.println(dateFormat.format(currentDate));
+
+        //count seconds between dates
+        long diffDay = currentDate.getTime() - dbDate.getTime();
+        TimeUnit.DAYS.convert(diffDay, TimeUnit.MILLISECONDS);
+
+        float totdays = (float) (diffDay / (1000 * 60 * 60 * 24));
+//...................
+        // lrtotfine.(count);
+
+        return totdays;
         } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
         }
-    
-    return diff;
+        return -1;
     }
+    //private static SimpleDateFormat = simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
+//    public static long getDayCount(String s,String e){
+//    
+//    long diff = -1;
+//        try {
+//            
+//            Date currentDate = new Date();
+//            Date dStart = currentDate;
+//            
+//
+////get the dbdate
+//            Date dEnd = SimpleDateFormat.parse(e);
+//            
+//            diff=Math.round((dEnd.getTime()-dStart.getTime()) / (double) 86400000);
+//            
+//        } catch (Exception e) {
+//        }
+//    
+//    return diff;
+//    }
 
     public String getBook1() {
         return book1;
