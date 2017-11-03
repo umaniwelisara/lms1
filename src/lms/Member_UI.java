@@ -34,7 +34,7 @@ public class Member_UI extends javax.swing.JFrame {
         cmbmgrade.setSelectedIndex(0);
         txtmemail.setText("");
         txtmconnum.setText("");
-        cmbmstatus.setSelectedIndex(2);
+        cmbmstatus.setSelectedIndex(0);
         conn = DBconnect.connect();
 
         tableload();
@@ -85,15 +85,15 @@ public class Member_UI extends javax.swing.JFrame {
         btnmdisable = new javax.swing.JButton();
         btnmenable = new javax.swing.JButton();
         txtmvisible = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(153, 0, 102));
         jLabel1.setText("LIBRARY REGISTRATION FORM");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, 430, 20));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 430, 20));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Name");
@@ -225,6 +225,10 @@ public class Member_UI extends javax.swing.JFrame {
         txtmvisible.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(txtmvisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 50, 280, 30));
 
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lms-2.jpg"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 1420, 1040));
+
         setSize(new java.awt.Dimension(1196, 479));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -241,6 +245,7 @@ public class Member_UI extends javax.swing.JFrame {
         String email = txtmemail.getText();
         String phone = txtmconnum.getText();
         String status = cmbmstatus.getSelectedItem().toString();
+        
         
         //check the fields are not empty.....................................................................
         if(txtmname.getText() == null || txtmemail.getText()== null || txtmconnum.getText() == null ||
@@ -262,9 +267,9 @@ public class Member_UI extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Please enter a valied phone number","Error",JOptionPane.ERROR_MESSAGE);
         return;
         }
+         
         
-        
-        
+        //............................................
         
         MemberModel m = new MemberModel(name, grade, email, phone, status);
         boolean successStatus = m.insertMember();
@@ -280,6 +285,7 @@ public class Member_UI extends javax.swing.JFrame {
             txtmemail.setText("");
             txtmconnum.setText("");
             cmbmstatus.setSelectedIndex(0);
+            
         } else {
             JOptionPane.showMessageDialog(this, "Error in inserting to db");
         }
@@ -372,7 +378,7 @@ public class Member_UI extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btnmenableMouseClicked
-
+       //select only enable students....................
     private void btnmenableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmenableActionPerformed
         // TODO add your handling code here:
         
@@ -390,7 +396,7 @@ public class Member_UI extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btnmenableActionPerformed
-
+    //select only disabled students....................
     private void btnmdisableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmdisableActionPerformed
         // TODO add your handling code here:
          try {
@@ -453,6 +459,7 @@ public class Member_UI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

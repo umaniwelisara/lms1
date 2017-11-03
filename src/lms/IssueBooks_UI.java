@@ -47,11 +47,11 @@ public class IssueBooks_UI extends javax.swing.JFrame {
         Calendar cal = Calendar.getInstance();
         System.out.println(df.format(cal.getTime()));
         lblcdate.setText(df.format(cal.getTime()));
-//        
-
+        
+        //get the current date
         Date currentDate = new Date();
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        System.out.println(dateFormat.format(currentDate));
+        //DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        System.out.println(df.format(currentDate));
 
         // convert date to calendar
         Calendar c = Calendar.getInstance();
@@ -60,10 +60,10 @@ public class IssueBooks_UI extends javax.swing.JFrame {
         c.add(Calendar.DATE, 7);
         // convert calendar to date
         Date currentDatePlusOne = c.getTime();
-        System.out.println(dateFormat.format(currentDatePlusOne));
+        System.out.println(df.format(currentDatePlusOne));
 
-        lblrdate.setText(dateFormat.format(currentDatePlusOne));
-//    //'''''''''''''''''
+        lblrdate.setText(df.format(currentDatePlusOne));
+// ...................................................................
 
     }
 
@@ -88,20 +88,19 @@ public class IssueBooks_UI extends javax.swing.JFrame {
         lblrdate = new javax.swing.JLabel();
         btnbbborrow = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1170, 420));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(102, 102, 0));
         jLabel5.setText("    BORROW BOOKS");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 30, 230, 30));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 90, 230, 30));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Member ID");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 100, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, -1, -1));
 
         bbmid.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         bbmid.setText("jTextField1");
@@ -110,11 +109,11 @@ public class IssueBooks_UI extends javax.swing.JFrame {
                 bbmidKeyTyped(evt);
             }
         });
-        getContentPane().add(bbmid, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 100, 190, -1));
+        getContentPane().add(bbmid, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, 190, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Book ID");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 150, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, -1, -1));
 
         bbbid_1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         bbbid_1.setText("jTextField1");
@@ -123,7 +122,7 @@ public class IssueBooks_UI extends javax.swing.JFrame {
                 bbbid_1KeyTyped(evt);
             }
         });
-        getContentPane().add(bbbid_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 150, 190, -1));
+        getContentPane().add(bbbid_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, 190, -1));
 
         bbbid_2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         bbbid_2.setText("jTextField1");
@@ -132,23 +131,23 @@ public class IssueBooks_UI extends javax.swing.JFrame {
                 bbbid_2KeyTyped(evt);
             }
         });
-        getContentPane().add(bbbid_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 190, 190, -1));
+        getContentPane().add(bbbid_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 190, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Current Date");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 240, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, -1, -1));
 
         lblcdate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblcdate.setText("jLabel5");
-        getContentPane().add(lblcdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 230, 170, 30));
+        getContentPane().add(lblcdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 260, 170, 30));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Return Date");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 280, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, -1, -1));
 
         lblrdate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblrdate.setText("jLabel5");
-        getContentPane().add(lblrdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 270, 170, 30));
+        getContentPane().add(lblrdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, 170, 30));
 
         btnbbborrow.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnbbborrow.setText("BORROW");
@@ -157,7 +156,7 @@ public class IssueBooks_UI extends javax.swing.JFrame {
                 btnbbborrowActionPerformed(evt);
             }
         });
-        getContentPane().add(btnbbborrow, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 340, 310, 50));
+        getContentPane().add(btnbbborrow, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 370, 310, 50));
 
         jButton1.setText("<");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -167,11 +166,12 @@ public class IssueBooks_UI extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 10, 60, 50));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/658964730.jpg"))); // NOI18N
-        jLabel7.setText("jLabel7");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 460, 420));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lms-2.jpg"))); // NOI18N
+        jLabel6.setText("jLabel6");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -580, 1320, 1020));
 
-        setBounds(0, 0, 1196, 479);
+        setSize(new java.awt.Dimension(1196, 479));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnbbborrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbbborrowActionPerformed
@@ -279,7 +279,7 @@ public class IssueBooks_UI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel lblcdate;
     private javax.swing.JLabel lblrdate;
     // End of variables declaration//GEN-END:variables

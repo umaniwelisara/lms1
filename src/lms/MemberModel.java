@@ -102,36 +102,6 @@ System.out.println(pst);
         }
 
     }
-//     public boolean deselectMember(){
-//         CheckboxGroup cg = new CheckboxGroup();
-//    Checkbox cb = cg.getSelectedCheckbox();
-//if(null != cb) {
-//  //not checked
-//  JOptionPane.showMessageDialog(null, "deactive the member");
-//  return true;
-//} else {
-//  JOptionPane.showMessageDialog(null, "active the member");
-//  return false;
-//}
-//     }
-//    
-//    public void viewEnableMember(){
-//        try {
-//            String s= "select mregID,mname,mgrade,memail,mcontactnum from members where status='Enable'"; 
-//             pst = conn.prepareStatement(n);
-//            rs = pst.executeQuery();
-//            tblbooks.setModel(DbUtils.resultSetToTableModel(rs));
-//            
-//        } catch (Exception e) {
-//            
-//        }
-//    
-//    
-//    
-//    }
-//    
-//    
-//    
 
     public String getMregID() {
         return mregID;

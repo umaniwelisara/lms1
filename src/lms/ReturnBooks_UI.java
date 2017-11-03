@@ -69,13 +69,14 @@ public class ReturnBooks_UI extends javax.swing.JFrame {
         btnmemidok = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(0, 0, 1200, 480));
         setMinimumSize(new java.awt.Dimension(1170, 480));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -146,12 +147,11 @@ public class ReturnBooks_UI extends javax.swing.JFrame {
         });
         jPanel1.add(btnmemidok, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 50, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 450, 340));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 90, 450, 340));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 153, 204));
         jLabel5.setText("    RETURN BOOKS");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 220, 30));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 220, 30));
 
         jButton1.setText("<");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -161,11 +161,62 @@ public class ReturnBooks_UI extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 10, 70, 40));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/b55ca3b361d5cf192a22b7a27db43eb9_outside-book-return-gibbons-municipal-library-library-book-return-clipart_350-270.jpeg"))); // NOI18N
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 100, 350, -1));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lms-2.jpg"))); // NOI18N
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 460));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        new LibraryHome_UI().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnmemidokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmemidokActionPerformed
+        try {
+            // TODO add your handling code here:
+            String memid = rmemid.getText();
+            String book1 = rbid1.getText();
+            String book2 = rbid2.getText();
+            String dayfine = rdayfine.getText();
+            String totfine = lrtotfine.getText();
+
+            ReturnBooksModel r1 = new ReturnBooksModel(memid, book1, book2, dayfine, totfine);
+
+            rbid1.setText(r1.showBooks1());
+            rbid2.setText(r1.showBooks2());
+
+            // showBooks();
+        } catch (SQLException ex) {
+            Logger.getLogger(ReturnBooks_UI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_btnmemidokActionPerformed
+
+    private void btnfinedayokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfinedayokActionPerformed
+        try {
+            // TODO add your handling code here:
+
+            String memid = rmemid.getText();
+            String book1 = rbid1.getText();
+            String book2 = rbid2.getText();
+            String dayfine = rdayfine.getText();
+            String totfine = lrtotfine.getText();
+
+            ReturnBooksModel r2 = new ReturnBooksModel(memid, book1, book2, dayfine, totfine);
+
+            float dayf = Float.parseFloat(dayfine);
+            float calc = dayf * r2.countdays();
+            String s = Float.toString(calc);
+            lrtotfine.setText(s);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ReturnBooks_UI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_btnfinedayokActionPerformed
 
     private void btnrreturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrreturnActionPerformed
         // TODO add your handling code here:
@@ -191,64 +242,11 @@ public class ReturnBooks_UI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error in inserting to db");
         }
 
-
     }//GEN-LAST:event_btnrreturnActionPerformed
 
     private void rmemidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rmemidActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rmemidActionPerformed
-
-    private void btnmemidokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmemidokActionPerformed
-        try {
-            // TODO add your handling code here:
-            String memid = rmemid.getText();
-            String book1 = rbid1.getText();
-            String book2 = rbid2.getText();
-            String dayfine = rdayfine.getText();
-            String totfine = lrtotfine.getText();
-
-            ReturnBooksModel r1 = new ReturnBooksModel(memid, book1, book2, dayfine, totfine);
-
-            rbid1.setText(r1.showBooks1());
-            rbid2.setText(r1.showBooks2());
-
-// showBooks();
-        } catch (SQLException ex) {
-            Logger.getLogger(ReturnBooks_UI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-
-    }//GEN-LAST:event_btnmemidokActionPerformed
-
-    private void btnfinedayokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfinedayokActionPerformed
-        try {
-            // TODO add your handling code here:
-
-            String memid = rmemid.getText();
-            String book1 = rbid1.getText();
-            String book2 = rbid2.getText();
-            String dayfine = rdayfine.getText();
-            String totfine = lrtotfine.getText();
-
-            ReturnBooksModel r2 = new ReturnBooksModel(memid, book1, book2, dayfine, totfine);
-
-            float dayf = Float.parseFloat(dayfine);
-            float calc = dayf * r2.countdays();
-            String s = Float.toString(calc);
-            lrtotfine.setText(s);
-
-        } catch (SQLException ex) {
-            Logger.getLogger(ReturnBooks_UI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-
-    }//GEN-LAST:event_btnfinedayokActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        new LibraryHome_UI().setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -295,7 +293,7 @@ public class ReturnBooks_UI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lrtotfine;
     private javax.swing.JTextField rbid1;

@@ -31,8 +31,8 @@ public class LibraryHome_UI extends javax.swing.JFrame {
         btnmanagemembers = new javax.swing.JButton();
         btnmanagecheckin = new javax.swing.JButton();
         btnmanagecheckin1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -45,7 +45,7 @@ public class LibraryHome_UI extends javax.swing.JFrame {
                 btnmanagebooksActionPerformed(evt);
             }
         });
-        getContentPane().add(btnmanagebooks, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 390, 60));
+        getContentPane().add(btnmanagebooks, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 390, 60));
 
         btnmanagemembers.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         btnmanagemembers.setText("MANAGE MEMBERS");
@@ -54,7 +54,7 @@ public class LibraryHome_UI extends javax.swing.JFrame {
                 btnmanagemembersActionPerformed(evt);
             }
         });
-        getContentPane().add(btnmanagemembers, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, 390, 50));
+        getContentPane().add(btnmanagemembers, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 390, 50));
 
         btnmanagecheckin.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         btnmanagecheckin.setText("RETURN BOOKS");
@@ -63,7 +63,7 @@ public class LibraryHome_UI extends javax.swing.JFrame {
                 btnmanagecheckinActionPerformed(evt);
             }
         });
-        getContentPane().add(btnmanagecheckin, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, 390, 60));
+        getContentPane().add(btnmanagecheckin, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 350, 390, 60));
 
         btnmanagecheckin1.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         btnmanagecheckin1.setText("BORROW BOOKS");
@@ -72,13 +72,16 @@ public class LibraryHome_UI extends javax.swing.JFrame {
                 btnmanagecheckin1ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnmanagecheckin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 390, 60));
+        getContentPane().add(btnmanagecheckin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 390, 60));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/library.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 320, 330));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel2.setText("LIBRARY MANAGEMENT SYSTEM");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 650, 50));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/images.jpg"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 120, 230, 230));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lms-2.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, -30, 960, 750));
 
         setSize(new java.awt.Dimension(1196, 479));
         setLocationRelativeTo(null);
@@ -153,6 +156,6 @@ public class LibraryHome_UI extends javax.swing.JFrame {
     private javax.swing.JButton btnmanagecheckin1;
     private javax.swing.JButton btnmanagemembers;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
