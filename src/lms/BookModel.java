@@ -5,15 +5,10 @@
  */
 package lms;
 
-import java.awt.Label;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import net.proteanit.sql.DbUtils;
 import lms.DBconnect;
+
 /**
  *
  * @author Umani Welisara
@@ -53,7 +48,7 @@ public class BookModel {
         try {
             String s = "insert into books (bname,bauthor,bcategory,bqty) values (?,?,?,?)";
             PreparedStatement pst = DBconnect.connect().prepareStatement(s);
-            
+
             pst.setString(1, this.bname);
             pst.setString(2, this.bauthor);
             pst.setString(3, this.bcategory);
@@ -87,9 +82,8 @@ public class BookModel {
 
         try {
             //Label lblbid = null;
-            
+
             //String bid = lblbid.getText();
-            
             String q = "update books "
                     + "set bname=?,bauthor=?,bcategory=? , bqty=?  "
                     + "where bid=?";
@@ -97,7 +91,7 @@ public class BookModel {
             PreparedStatement pst = DBconnect.connect().prepareStatement(q);
 
             // pst = conn.prepareStatement(qr);
-           // pst.setString(1, this.bid);
+            // pst.setString(1, this.bid);
             pst.setString(1, this.bname);
             pst.setString(2, this.bauthor);
             pst.setString(3, this.bcategory);

@@ -21,16 +21,16 @@ import net.proteanit.sql.DbUtils;
  *
  * @author Umani Welisara
  */
-public class ReturnBooks_UI extends javax.swing.JFrame {
+public class ReturnBooksUI extends javax.swing.JFrame {
 
     /**
-     * Creates new form ReturnBooks_UI
+     * Creates new form ReturnBooksUI
      */
     Connection conn = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
 
-    public ReturnBooks_UI() {
+    public ReturnBooksUI() {
         initComponents();
         rmemid.setText("");
         rbid1.setText("");
@@ -170,7 +170,7 @@ public class ReturnBooks_UI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        new LibraryHome_UI().setVisible(true);
+        new LibraryHomeUI().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -190,7 +190,7 @@ public class ReturnBooks_UI extends javax.swing.JFrame {
 
             // showBooks();
         } catch (SQLException ex) {
-            Logger.getLogger(ReturnBooks_UI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ReturnBooksUI.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_btnmemidokActionPerformed
@@ -213,7 +213,7 @@ public class ReturnBooks_UI extends javax.swing.JFrame {
             lrtotfine.setText(s);
 
         } catch (SQLException ex) {
-            Logger.getLogger(ReturnBooks_UI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ReturnBooksUI.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_btnfinedayokActionPerformed
@@ -265,20 +265,21 @@ public class ReturnBooks_UI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ReturnBooks_UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ReturnBooksUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ReturnBooks_UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ReturnBooksUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ReturnBooks_UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ReturnBooksUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ReturnBooks_UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ReturnBooksUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ReturnBooks_UI().setVisible(true);
+                new ReturnBooksUI().setVisible(true);
             }
         });
     }

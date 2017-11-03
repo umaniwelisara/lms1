@@ -9,7 +9,6 @@ import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 
@@ -17,16 +16,16 @@ import net.proteanit.sql.DbUtils;
  *
  * @author Umani Welisara
  */
-public class Book_UI extends javax.swing.JFrame {
+public class BookUI extends javax.swing.JFrame {
 
     /**
-     * Creates new form Book_UI
+     * Creates new form BookUI
      */
     Connection conn = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
 
-    public Book_UI() {
+    public BookUI() {
         initComponents();
 
         txtbname.setText("");
@@ -48,7 +47,7 @@ public class Book_UI extends javax.swing.JFrame {
             rs = pst.executeQuery();
             tblbooks.setModel(DbUtils.resultSetToTableModel(rs));
             return true;
-            
+
         } catch (Exception e) {
             return false;
         }
@@ -239,25 +238,35 @@ public class Book_UI extends javax.swing.JFrame {
         String category = cmbbcategory.getSelectedItem().toString();
         String qty = txtbqty.getText();
 
-       //required fields------------------------------------------------------------------------------------------------------
-    if(txtbname.getText() == null || txtbauthor.getText()== null || txtbqty.getText() == null ||
-                cmbbcategory.getSelectedItem() == "Choose book category" ){
-        JOptionPane.showMessageDialog(null, "Please fill the required fields","Error",JOptionPane.ERROR_MESSAGE);
-        return;
-        }
-         //qty validation-------------------------------------------------------------------------------
-        int num = Integer.parseInt(qty);
-        if(num > 15 || num < 1){
-            JOptionPane.showMessageDialog(null, "Please enter quantity between 1 - 15", "Error" , JOptionPane.ERROR_MESSAGE);
+        //name validation......................
+//            if(!(Pattern.matches("[a-zA-Z]*", name))){
+//        
+//        JOptionPane.showMessageDialog(null, "Please enter a valied name here","Error",JOptionPane.ERROR_MESSAGE);
+//        return;
+//        }
+        //required fields------------------------------------------------------------------------------------------------------
+        if (txtbname.getText().equalsIgnoreCase("") || txtbauthor.getText().equalsIgnoreCase("") || txtbqty.getText().equalsIgnoreCase("")
+                || cmbbcategory.getSelectedItem() == "Choose book category") {
+            JOptionPane.showMessageDialog(null, "Please fill the required fields", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-    
-       //.....................................................................................................
-        
-        
+        //qty validation-------------------------------------------------------------------------------
+        int num = 0;
+        try {
+            num = Integer.parseInt(qty);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Qty should be an number", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (num > 15 || num < 1) {
+            JOptionPane.showMessageDialog(null, "Please enter quantity between 1 - 15", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        //.....................................................................................................
         BookModel b = new BookModel(name, author, category, qty);
         boolean successStatus = b.insertBook();
-         if (successStatus) {
+        if (successStatus) {
             JOptionPane.showMessageDialog(this, "Successfully inserted to db");
             tableload();
             lblbid.setText("");
@@ -305,18 +314,21 @@ public class Book_UI extends javax.swing.JFrame {
             String author = txtbauthor.getText();
             String category = cmbbcategory.getSelectedItem().toString();
             String qty = txtbqty.getText();
-            
-            
-         //qty validation-------------------------------------------------------------------------------
-        int num = Integer.parseInt(qty);
-        if(num > 15 || num < 1){
-            JOptionPane.showMessageDialog(null, "Please enter quantity between 1 - 15", "Error" , JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-   
-       //.....................................................................................................
-            
-            BookModel b = new BookModel(id,name, author, category, qty);
+
+            if (txtbname.getText().equalsIgnoreCase("") || txtbauthor.getText().equalsIgnoreCase("") || txtbqty.getText().equalsIgnoreCase("")
+                    || cmbbcategory.getSelectedItem() == "Choose book category") {
+                JOptionPane.showMessageDialog(null, "Please fill the required fields", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            //qty validation-------------------------------------------------------------------------------
+            int num = Integer.parseInt(qty);
+            if (num > 15 || num < 1) {
+                JOptionPane.showMessageDialog(null, "Please enter quantity between 1 - 15", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            //.....................................................................................................
+            BookModel b = new BookModel(id, name, author, category, qty);
             boolean successStatus = b.updateBook();
 
             if (successStatus) {
@@ -396,24 +408,24 @@ public class Book_UI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        new LibraryHome_UI().setVisible(true);
+        new LibraryHomeUI().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtsearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtsearchKeyReleased
         // TODO add your handling code here:
-        
-    
+
+
     }//GEN-LAST:event_txtsearchKeyReleased
 
     private void txtbqtyKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbqtyKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
-        if(!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE)|| c==KeyEvent.VK_DELETE)){
-        evt.consume();
+        if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || c == KeyEvent.VK_DELETE)) {
+            evt.consume();
         }
-        
-        
+
+
     }//GEN-LAST:event_txtbqtyKeyTyped
 
     /**
@@ -433,21 +445,23 @@ public class Book_UI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Book_UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BookUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Book_UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BookUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Book_UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BookUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Book_UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BookUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Book_UI().setVisible(true);
+                new BookUI().setVisible(true);
             }
         });
     }

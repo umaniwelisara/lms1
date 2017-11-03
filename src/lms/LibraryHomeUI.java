@@ -9,12 +9,12 @@ package lms;
  *
  * @author Umani Welisara
  */
-public class LibraryHome_UI extends javax.swing.JFrame {
+public class LibraryHomeUI extends javax.swing.JFrame {
 
     /**
      * Creates new form LiibraryHome
      */
-    public LibraryHome_UI() {
+    public LibraryHomeUI() {
         initComponents();
     }
 
@@ -89,26 +89,26 @@ public class LibraryHome_UI extends javax.swing.JFrame {
 
     private void btnmanagebooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmanagebooksActionPerformed
         // TODO add your handling code here:
-        new Book_UI().setVisible(true);
+        new BookUI().setVisible(true);
         this.setVisible(false);
         
     }//GEN-LAST:event_btnmanagebooksActionPerformed
 
     private void btnmanagemembersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmanagemembersActionPerformed
         // TODO add your handling code here:
-        new Member_UI().setVisible(true);
+        new MemberUI().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnmanagemembersActionPerformed
 
     private void btnmanagecheckinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmanagecheckinActionPerformed
         // TODO add your handling code here:
-        new ReturnBooks_UI().setVisible(true);
+        new ReturnBooksUI().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnmanagecheckinActionPerformed
 
     private void btnmanagecheckin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmanagecheckin1ActionPerformed
         // TODO add your handling code here:
-        new IssueBooks_UI().setVisible(true);
+        new IssueBooksUI().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnmanagecheckin1ActionPerformed
 
@@ -129,14 +129,18 @@ public class LibraryHome_UI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LibraryHome_UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LibraryHomeUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LibraryHome_UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LibraryHomeUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LibraryHome_UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LibraryHomeUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LibraryHome_UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LibraryHomeUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -145,7 +149,7 @@ public class LibraryHome_UI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LibraryHome_UI().setVisible(true);
+                new LibraryHomeUI().setVisible(true);
             }
         });
     }

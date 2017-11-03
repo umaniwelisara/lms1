@@ -17,7 +17,7 @@ import net.proteanit.sql.DbUtils;
  *
  * @author Umani Welisara
  */
-public class Member_UI extends javax.swing.JFrame {
+public class MemberUI extends javax.swing.JFrame {
 
     /**
      * Creates new form member
@@ -26,7 +26,7 @@ public class Member_UI extends javax.swing.JFrame {
     PreparedStatement pst = null;
     ResultSet rs = null;
 
-    public Member_UI() {
+    public MemberUI() {
         initComponents();
 
         lblmregid.setText("");
@@ -248,12 +248,12 @@ public class Member_UI extends javax.swing.JFrame {
         
         
         //check the fields are not empty.....................................................................
-        if(txtmname.getText() == null || txtmemail.getText()== null || txtmconnum.getText() == null ||
+        if(txtmname.getText().equalsIgnoreCase("") || txtmemail.getText().equalsIgnoreCase("") || txtmconnum.getText().equalsIgnoreCase("") ||
                 cmbmstatus.getSelectedItem() == "Select one" || cmbmgrade.getSelectedItem() == "choose the grade"  ){
         JOptionPane.showMessageDialog(null, "Please fill the required fields","Error",JOptionPane.ERROR_MESSAGE);
         return;
         }
-        
+        //"^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$"
         //email validation..................
         if(!(Pattern.matches("^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$", email))){
         
@@ -295,7 +295,7 @@ public class Member_UI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        new LibraryHome_UI().setVisible(true);
+        new LibraryHomeUI().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -310,6 +310,13 @@ public class Member_UI extends javax.swing.JFrame {
             String email = txtmemail.getText();
             String phone = txtmconnum.getText();
             String status = cmbmstatus.getSelectedItem().toString();
+            //name validation......................
+            if(!(Pattern.matches("[a-zA-Z]*", name))){
+        
+        JOptionPane.showMessageDialog(null, "Please enter a valied name here","Error",JOptionPane.ERROR_MESSAGE);
+        return;
+        }
+            
             
             //email validation..................
         if(!(Pattern.matches("^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$", email))){
@@ -429,21 +436,23 @@ public class Member_UI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Member_UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MemberUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Member_UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MemberUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Member_UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MemberUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Member_UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MemberUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Member_UI().setVisible(true);
+                new MemberUI().setVisible(true);
             }
         });
     }

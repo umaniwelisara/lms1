@@ -5,16 +5,8 @@
  */
 package lms;
 
-import java.awt.Checkbox;
-import java.awt.CheckboxGroup;
-import java.awt.Label;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import net.proteanit.sql.DbUtils;
 
 /**
  *

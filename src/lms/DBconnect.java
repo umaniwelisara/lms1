@@ -13,19 +13,19 @@ import java.sql.DriverManager;
  * @author Umani Welisara
  */
 public class DBconnect {
-    public static Connection connect(){
-     Connection conn = null;
-     
+
+    public static Connection connect() {
+        Connection conn = null;
+
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/library","root","");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/library", "root", "");
         } catch (Exception e) {
-            
+
             System.out.println(e);
         }
-     
-     
-     return conn;
+
+        return conn;
     }
 
     static Connection conn() {
